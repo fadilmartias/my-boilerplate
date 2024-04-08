@@ -19,12 +19,29 @@
             </div>
         </div>
         <div class="right-items">
-            <div class="user-info flex gap-3 cursor-pointer">
-                <div class="info text-right">
-                    <div class="text-sm font-semibold">M. Fadil Martias</div>
-                    <div class="text-xs">Admin</div>
+            <div class="user relative">
+                <div class="user-info flex gap-3 cursor-pointer">
+                    <div class="info text-right">
+                        <div class="text-sm font-semibold">M. Fadil Martias</div>
+                        <div class="text-xs">Admin</div>
+                    </div>
+                    <div class="avatar w-11 h-11 rounded-full bg-[#2987C2]"></div>
                 </div>
-                <div class="avatar w-11 h-11 rounded-full bg-[#2987C2]"></div>
+                <div
+                    class="dropdown absolute w-full top-full mt-1 border rounded-xl bg-white shadow-lg pointer-events-none opacity-0 transition-opacity">
+                    <ul class="group-items flex flex-col rounded-xl ">
+                        <li class="item flex items-center gap-3 px-4 py-2 hover:bg-slate-100 rounded-t-lg">
+                            <span class="icon-[lets-icons--setting-alt-line]" style="width: 16px; height: 16px;"></span>
+                            <a class="block" href="#">Setting</a>
+                        </li>
+                        <div class="divider"></div>
+                        <li class="item flex items-center gap-3 text-red-600 hover:bg-slate-100 rounded-b-lg px-4 py-2">
+                            <span class="icon-[majesticons--logout-line] rotate-180"
+                                style="width: 16px; height: 16px;"></span>
+                            <a class="block" href="#">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -43,6 +60,9 @@
                 document.querySelector('.sidebar .wrapper').classList.replace('hidden', 'flex')
             }
         });
+        document.querySelector('.user-info').addEventListener('click', function () {
+            document.querySelector('.dropdown').classList.toggle('active');
+        });
     </script>
     <!-- END TOPBAR -->
     <!-- SIDEBAR -->
@@ -53,11 +73,13 @@
                     Menu
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                        Dashboard
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[iconamoon--home]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="#">Dashboard</a>
                     </li>
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                        Tabel
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[lets-icons--table]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="#">Tabel</a>
                     </li>
                 </ul>
             </div>
@@ -67,17 +89,21 @@
                     Auth
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer yyyyyyyyyyyyyyyyyyyyy">
-                        Register
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[mdi--register]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="#">Register</a>
                     </li>
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                        Login
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[material-symbols--login]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="#">Login</a>
                     </li>
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                        Forgot Password
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[mdi--forgot-password]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="#">Forgot Password</a>
                     </li>
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                        Change Password
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[mdi--password]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="#">Change Password</a>
                     </li>
                 </ul>
             </div>
@@ -87,20 +113,45 @@
                     Components
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer active">
-                        Blank Page
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3 active">
+                        <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="index.html">Black Page</a>
                     </li>
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                       <a class="block" href="./components/loading-screen.html">Loading Screen</a>
+                    <li class="item">
+                        <div
+                            class="relative dropdown-sidebar item px-4 py-2 rounded-2xl cursor-pointer flex items-center justify-between gap-3">
+                            <div class="left-item flex items-center justify-between gap-3">
+                                <span class="icon-[tabler--error-404]" style="width: 16px; height: 16px;"></span>
+                                <a class="block" href="#">404 Page</a>
+                            </div>
+                            <div class="right-items flex items-center">
+                                <span class="icon-[iconoir--nav-arrow-right]" style="width: 16px; height: 16px;"></span>
+                            </div>
+                        </div>
+                        <ul class="dropdown-items ml-5">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Dropdown Item 1</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Dropdown Item 2</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Dropdown Item 3</a></li>
+                        </ul>
+                        <script>
+                            document.querySelectorAll('.dropdown-sidebar').forEach(function (element) {
+                                element.addEventListener('click', function () {
+                                    const dropdownContent = this.nextElementSibling;
+                                    dropdownContent.classList.toggle('active');
+                                });
+                            });
+                        </script>
                     </li>
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                        404 Page
+
+
+
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[mdi--success]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="#">Success Page</a>
                     </li>
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                        Success Page
-                    </li>
-                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
-                        Failed Page
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[ic--baseline-sms-failed]" style="width: 16px; height: 16px;"></span>
+                        <a class="block" href="#">Error Page</a>
                     </li>
                 </ul>
             </div>
@@ -121,7 +172,7 @@
                 Kosong
             </div>
         </div>
-    </div> 
+    </div>
     <script>
         // Daftar breadcrumb yang akan ditampilkan
         const breadcrumbItems = ['Components', 'Blank Page']; // Anda bisa mengubah array ini sesuai dengan kebutuhan
