@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../assets/output.css" rel="stylesheet">
+    <title>Blank Page</title>
+    <link rel="icon" href="../assets/favicon.svg"">
+</head>
+
+<body class="">
+    <!-- TOPBAR -->
+    <nav class=" topbar active fixed top-0 h-16 w-full border-b flex items-center transition-all">
+    <div class="wrapper w-full flex justify-between items-center h-full px-6 py-2">
+        <div class="left-items">
+            <div class="btn-close-topbar cursor-pointer">
+                <span class="icon-[solar--hamburger-menu-linear]" style="width: 24px; height: 24px;"></span>
+            </div>
+        </div>
+        <div class="right-items">
+            <div class="user-info flex gap-3 cursor-pointer">
+                <div class="info text-right">
+                    <div class="text-sm font-semibold">M. Fadil Martias</div>
+                    <div class="text-xs">Admin</div>
+                </div>
+                <div class="avatar w-11 h-11 rounded-full bg-[#2987C2]"></div>
+            </div>
+        </div>
+    </div>
+    </nav>
+    <script>
+        document.querySelector('.btn-close-topbar').addEventListener('click', function () {
+            if (document.querySelector('.sidebar').classList.contains('active')) {
+                document.querySelector('.topbar').classList.remove('active')
+                document.querySelector('.sidebar').classList.remove('active')
+                document.querySelector('.content-wrapper').classList.replace('pl-60', 'pl-0')
+                document.querySelector('.sidebar .wrapper').classList.replace('flex', 'hidden')
+            } else {
+                document.querySelector('.topbar').classList.add('active')
+                document.querySelector('.sidebar').classList.add('active')
+                document.querySelector('.content-wrapper').classList.replace('pl-0', 'pl-60')
+                document.querySelector('.sidebar .wrapper').classList.replace('hidden', 'flex')
+            }
+        });
+    </script>
+    <!-- END TOPBAR -->
+    <!-- SIDEBAR -->
+    <aside class="sidebar active text-sm fixed left-0 h-screen bg-white border-r transition-all">
+        <div class="wrapper flex flex-col gap-4">
+            <div class="group-items flex flex-col gap-4">
+                <div class="title font-bold text-[#6F7787] cursor-default">
+                    Menu
+                </div>
+                <ul class="items flex flex-col gap-2">
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                        Dashboard
+                    </li>
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                        Tabel
+                    </li>
+                </ul>
+            </div>
+            <div class="divider"></div>
+            <div class="group-items flex flex-col gap-4">
+                <div class="title font-bold text-[#6F7787] cursor-default">
+                    Auth
+                </div>
+                <ul class="items flex flex-col gap-2">
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer yyyyyyyyyyyyyyyyyyyyy">
+                        Register
+                    </li>
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                        Login
+                    </li>
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                        Forgot Password
+                    </li>
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                        Change Password
+                    </li>
+                </ul>
+            </div>
+            <div class="divider"></div>
+            <div class="group-items flex flex-col gap-4">
+                <div class="title font-bold text-[#6F7787] cursor-default">
+                    Components
+                </div>
+                <ul class="items flex flex-col gap-2">
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer active">
+                        Blank Page
+                    </li>
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                       <a class="block" href="./components/loading-screen.html">Loading Screen</a>
+                    </li>
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                        404 Page
+                    </li>
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                        Success Page
+                    </li>
+                    <li class="item px-4 py-2 rounded-2xl cursor-pointer">
+                        Failed Page
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </aside>
+    <!-- END SIDEBAR -->
+
+    <!-- CONTENT -->
+    <div class="content-wrapper pl-60 pt-16">
+        <div class="content p-6">
+            <div class="header flex gap-8 items-end mb-6">
+                <div class="title font-bold text-2xl pb-0 mb-0 align-text-bottom">Blank Page</div>
+                <div class="breadcrumb flex gap-1 text-xs align-text-bottom pb-[.25rem]" id="breadcrumb">
+                </div>
+            </div>
+            <div class="body">
+                Kosong
+            </div>
+        </div>
+    </div> 
+    <script>
+        // Daftar breadcrumb yang akan ditampilkan
+        const breadcrumbItems = ['Components', 'Blank Page']; // Anda bisa mengubah array ini sesuai dengan kebutuhan
+
+        // Ambil elemen breadcrumb
+        const breadcrumbContainer = document.getElementById('breadcrumb');
+
+        // Buat dan tambahkan elemen breadcrumb secara dinamis
+        breadcrumbItems.forEach((item, index) => {
+            const breadcrumbItem = document.createElement('div');
+
+            // Tambahkan teks dan class
+            breadcrumbItem.textContent = item;
+
+            // Jika bukan item terakhir, tambahkan tanda "/"
+            if (index < breadcrumbItems.length && index != 0) {
+                const separator = document.createElement('div');
+                separator.textContent = '/';
+                breadcrumbContainer.appendChild(separator);
+            }
+
+            breadcrumbContainer.appendChild(breadcrumbItem);
+        });
+
+    </script>
+    <!-- END CONTENT -->
+    </body>
+
+</html>

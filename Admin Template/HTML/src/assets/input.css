@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .sidebar {
+    @apply text-sm fixed left-0 top-0 w-60 h-screen bg-white border-r p-6
+} */
+.divider {
+    @apply h-[1px] w-full bg-zinc-200 my-2;
+}
+
+.topbar.active {
+    @apply pl-60;
+}
+.sidebar.active {
+    @apply w-60 p-6;
+}
+
+.sidebar .item.active {
+    @apply bg-[#F2F8FC] font-bold text-[#2987C2];
+}
