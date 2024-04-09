@@ -55,3 +55,22 @@ breadcrumbItems.forEach((item, index) => {
 
     breadcrumbContainer.appendChild(breadcrumbItem);
 });
+
+$(document).ready(function(){
+    // Menambahkan event listener untuk semua elemen dengan data-toggle="modal"
+    $('[data-toggle="modal"]').click(function(){
+        var targetModal = $(this).attr('data-target'); // Mendapatkan nilai dari atribut data-target yang diklik
+        $(targetModal).addClass('active'); // Menampilkan modal
+    });
+
+    $('[data-dismiss="modal"]').click(function(){
+        // Menemukan modal yang sedang aktif dan menutupnya
+        $(this).closest('.modal').removeClass('active');
+    });
+
+    // Menutup modal ketika btn-close diklik
+    $('.btn-close').click(function(){
+        // Menemukan modal yang sedang aktif dan menutupnya
+        $(this).closest('.modal').removeClass('active');
+    });
+});
