@@ -68,9 +68,10 @@ $(document).ready(function(){
         $(this).closest('.modal').removeClass('active');
     });
 
-    // Menutup modal ketika btn-close diklik
-    $('.btn-close').click(function(){
-        // Menemukan modal yang sedang aktif dan menutupnya
-        $(this).closest('.modal').removeClass('active');
-    });
+    $('#loading-screen').click(function() {
+        $('.loading-screen.wrapper').toggleClass('active');
+    })
+    $('#disable-loading').click(function() {
+        $('.loading-screen.wrapper').toggleClass('active');
+    })
 });

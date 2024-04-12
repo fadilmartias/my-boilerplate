@@ -5,8 +5,30 @@
 /* .sidebar {
     @apply text-sm fixed left-0 top-0 w-60 h-screen bg-white border-r p-6
 } */
+
+@layer base {
+    :root {
+        --color-hover: 242 248 252;
+        --color-primary: 0 169 255;
+        --color-secondary: 137 207 243;
+        --color-tertiary: 160 233 255;
+        --color-accent: 205 245 253;
+        --color-warning: 234 179 8;
+        --color-danger: 239 68 68;
+        --color-success: 34 197 94;
+        --color-primary-hover: 0 139 204;
+        --color-secondary-hover: 116 182 214;
+        --color-tertiary-hover: 134 220 241;
+        --color-accent-hover: 183 237 251;
+        --color-warning-hover: 214 155 8;
+        --color-danger-hover: 225 45 45;
+        --color-success-hover: 22 157 74;
+        --color-border: 228 228 231;
+    }
+}
+
 /* LOADING SCREEN */
-.ls-container {
+.loading-screen.wrapper {
     position: fixed;
     inset: 0;
     display: flex;
@@ -21,12 +43,12 @@
     pointer-events: none;
 }
 
-.ls-container.active {
+.loading-screen.wrapper.active {
     opacity: 1;
     pointer-events: auto;
 }
 
-.ls-container.active>.ls-item {
+.loading-screen.wrapper>.item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +62,7 @@
     border-radius: 50%;
     width: 48px;
     height: 48px;
-    color: #F2F8FC;
+    color: rgb(var(--color-accent) / 1);
 }
 
 .spinner:before,
@@ -58,7 +80,7 @@
 }
 
 .spinner:after {
-    color: #2987C2;
+    color: rgb(var(--color-primary) / 1);
     transform: rotateY(70deg);
     animation-delay: .4s;
 }
@@ -120,18 +142,18 @@
 }
 
 
-.ls-container.active>.ls-item>.ls-title {
+.loading-screen.wrapper>.item>.header {
     font-size: 2rem;
     font-weight: bold;
 }
 
-.ls-container.active>.ls-item>.ls-text {
+.loading-screen.wrapper>.item>.body {
     font-size: 1.3rem;
     font-weight: 500;
 }
 
-.ls-title {
-    font-size: 48px;
+.loading-screen.wrapper>.item>.header {
+    font-size: 36px;
     font-weight: bold;
     letter-spacing: 2px;
     font-family: Arial, Helvetica, sans-serif;
@@ -140,7 +162,7 @@
     text-shadow: 0 0 1px white;
 }
 
-.ls-title:before {
+.loading-screen.wrapper>.item>.header:before {
     content: "Loading";
 }
 
@@ -159,6 +181,7 @@
         letter-spacing: 4px;
     }
 }
+
 /* END LOADING SCREEN */
 
 /* ALERT */
@@ -167,24 +190,90 @@
 }
 
 .alert.alert-primary {
-    @apply bg-[#2987C2] text-white;
+    @apply bg-primary text-white;
 }
 
 .alert.alert-secondary {
-    @apply bg-[#F2F8FC];
+    @apply bg-secondary text-white;
+}
+
+.alert.alert-warning {
+    @apply bg-warning text-white;
 }
 
 .alert.alert-success {
-    @apply bg-green-500;
+    @apply bg-success text-white;
 }
 
 .alert.alert-danger {
-    @apply bg-red-500 text-white;
+    @apply bg-danger text-white;
 }
+
 /* END ALERT */
 
+/* BUTTON */
+.btn {
+    @apply px-4 py-2 border rounded-lg cursor-pointer;
+}
+
+button:disabled,
+.btn:disabled,
+.btn.disabled {
+    @apply opacity-65 cursor-not-allowed;
+}
+
+.btn-block {
+    @apply w-full;
+}
+
+.btn.btn-primary {
+    @apply bg-primary text-white;
+}
+
+.btn.btn-primary:hover {
+    @apply bg-primary-hover;
+}
+
+.btn.btn-secondary {
+    @apply bg-secondary text-white;
+}
+
+.btn.btn-secondary:hover {
+    @apply bg-secondary-hover;
+}
+
+.btn.btn-warning {
+    @apply bg-warning text-white;
+}
+
+.btn.btn-warning:hover {
+    @apply bg-warning-hover;
+}
+
+.btn.btn-danger {
+    @apply bg-danger text-white;
+}
+
+.btn.btn-danger:hover {
+    @apply bg-danger-hover;
+}
+
+.btn.btn-success {
+    @apply bg-success text-white;
+}
+
+.btn.btn-success:hover {
+    @apply bg-success-hover;
+}
+
+/* END BUTTON */
+
 .divider {
-    @apply h-[1px] w-full bg-zinc-200;
+    @apply h-[1px] w-full bg-border;
+}
+
+.hover {
+    @apply bg-hover;
 }
 
 .topbar.active {
@@ -196,7 +285,7 @@
 }
 
 .sidebar .item.active {
-    @apply bg-[#F2F8FC] font-bold text-[#2987C2];
+    @apply bg-hover font-bold text-primary;
 }
 
 .dropdown-items {
@@ -219,6 +308,31 @@
     -webkit-backdrop-filter: blur(8.5px);
 } */
 
+/* MODAL */
+.modal {
+    @apply fixed inset-0 z-[99999] bg-black bg-opacity-70 flex justify-center items-center opacity-0 pointer-events-none;
+}
+
+
+.modal.fade,
+.modal.zoom {
+    @apply transition-opacity;
+}
+
+.modal.zoom .modal-dialog {
+    @apply scale-50 transition-transform;
+}
+
 .modal.active {
     @apply opacity-100 pointer-events-auto;
 }
+
+.modal.zoom.active .modal-dialog {
+    @apply scale-100;
+}
+
+
+/* .modal.active .modal-dialog {
+    @apply opacity-100 pointer-events-auto;
+} */
+/* END MODAL */

@@ -11,7 +11,7 @@
 
 <body class="">
     <!-- TOPBAR -->
-    <nav class=" topbar active fixed top-0 h-16 w-full border-b flex items-center transition-all">
+    <nav class=" topbar active fixed top-0 h-16 w-full border-b border-b-border flex items-center transition-all">
         <div class="wrapper w-full flex justify-between items-center h-full px-6 py-2">
             <div class="left-items">
                 <div class="btn-close-topbar cursor-pointer">
@@ -25,20 +25,20 @@
                             <div class="text-sm font-semibold">M. Fadil Martias</div>
                             <div class="text-xs">Admin</div>
                         </div>
-                        <div class="avatar w-11 h-11 rounded-full bg-[#2987C2]"></div>
+                        <div class="avatar w-11 h-11 rounded-full bg-primary"></div>
                     </div>
                     <div
                         class="dropdown absolute w-full top-full mt-1 border rounded-xl bg-white shadow-lg pointer-events-none opacity-0 transition-opacity">
                         <ul class="group-items flex flex-col rounded-xl ">
                             <li
-                                class="item flex cursor-pointer items-center gap-3 px-4 py-2 hover:bg-[#F2F8FC] rounded-t-lg">
+                                class="item flex cursor-pointer items-center gap-3 px-4 py-2 hover:bg-hover rounded-t-lg">
                                 <span class="icon-[lets-icons--setting-alt-line]"
                                     style="width: 16px; height: 16px;"></span>
                                 <a class="block w-full" href="#">Setting</a>
                             </li>
                             <div class="divider"></div>
                             <li
-                                class="item flex cursor-pointer items-center gap-3 text-red-600 hover:bg-[#F2F8FC] rounded-b-lg px-4 py-2">
+                                class="item flex cursor-pointer items-center gap-3 text-red-600 hover:bg-hover rounded-b-lg px-4 py-2">
                                 <span class="icon-[majesticons--logout-line] rotate-180"
                                     style="width: 16px; height: 16px;"></span>
                                 <a class="block w-full" href="./auth/login.html">Log Out</a>
@@ -51,18 +51,18 @@
     </nav>
     <!-- END TOPBAR -->
     <!-- SIDEBAR -->
-    <aside class="sidebar active text-sm fixed left-0 h-screen bg-white border-r transition-all overflow-y-auto">
+    <aside class="sidebar active text-sm fixed left-0 h-screen bg-white border-r border-r-border transition-all overflow-y-auto">
         <div class="wrapper flex flex-col gap-4">
             <div class="group-items flex flex-col gap-4">
-                <div class="title font-bold text-[#6F7787] cursor-default">
+                <div class="title font-bold text-gray-500 cursor-default">
                     Menu
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[iconamoon--home]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Dashboard</a>
                     </li>
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[lets-icons--table]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Tabel</a>
                     </li>
@@ -70,23 +70,23 @@
             </div>
             <div class="divider"></div>
             <div class="group-items flex flex-col gap-4">
-                <div class="title font-bold text-[#6F7787] cursor-default">
+                <div class="title font-bold text-gray-500 cursor-default">
                     Auth
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[mdi--register]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="../pages/auth/register.html">Register</a>
                     </li>
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[material-symbols--login]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="../pages/auth/login.html">Login</a>
                     </li>
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[mdi--forgot-password]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="../pages/auth/forgot-password.html">Forgot Password</a>
                     </li>
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[mdi--password]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="../pages/auth/reset-password.html">Reset Password</a>
                     </li>
@@ -94,19 +94,19 @@
             </div>
             <div class="divider"></div>
             <div class="group-items flex flex-col gap-4">
-                <div class="title font-bold text-[#6F7787] cursor-default">
+                <div class="title font-bold text-gray-500 cursor-default">
                     Pages
                 </div>
                 <ul class="items flex flex-col gap-2">
                     <li
-                        class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3 active">
+                        class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3 active">
                         <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="index.html">Black Page</a>
                     </li>
                     <li class="item">
                         <div
                             class="relative dropdown-sidebar item px-4 py-2 rounded-2xl cursor-pointer flex items-center justify-between gap-3">
-                            <div class="left-ite hover:bg-[#F2F8FC]m flex items-center justify-between gap-3">
+                            <div class="left-ite hover:bg-hoverm flex items-center justify-between gap-3">
                                 <span class="icon-[tabler--error-404]" style="width: 16px; height: 16px;"></span>
                                 <a class="block w-full" href="#">Error Pages</a>
                             </div>
@@ -116,21 +116,21 @@
                         </div>
                         <ul class="dropdown-items ml-5">
                             <li><a href="./error/404.html"
-                                    class="block px-4 py-2 rounded-2xl hover:bg-[#F2F8FC]">404</a>
+                                    class="block px-4 py-2 rounded-2xl hover:bg-hover">404</a>
                             </li>
-                            <li><a href="#" class="block px-4 py-2 rounded-2xl hover:bg-[#F2F8FC]">403</a>
+                            <li><a href="#" class="block px-4 py-2 rounded-2xl hover:bg-hover">403</a>
                             </li>
-                            <li><a href="#" class="block px-4 py-2 rounded-2xl hover:bg-[#F2F8FC]">500</a>
+                            <li><a href="#" class="block px-4 py-2 rounded-2xl hover:bg-hover">500</a>
                             </li>
                         </ul>
 
                     </li>
 
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[mdi--success]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Success Page</a>
                     </li>
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[ic--baseline-sms-failed]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Error Page</a>
                     </li>
@@ -138,23 +138,27 @@
             </div>
             <div class="divider"></div>
             <div class="group-items flex flex-col gap-4">
-                <div class="title font-bold text-[#6F7787] cursor-default">
+                <div class="title font-bold text-gray-500 cursor-default">
                     Components
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="./components/alert.html">Alert</a>
                     </li>
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
-                        <span class="icon-[mdi--success]" style="width: 16px; height: 16px;"></span>
-                        <a class="block w-full" href="./components/loading-screen.html">Loading Screen</a>
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
+                        <a class="block w-full" href="./components/button.html">Button</a>
                     </li>
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3" data-toggle="modal" data-target="#modal-example">
+                    <li id="loading-screen" class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        <span class="icon-[mdi--success]" style="width: 16px; height: 16px;"></span>
+                        <a class="block w-full" class="">Loading Screen</a>
+                    </li>
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3" data-toggle="modal" data-target="#modal-example">
                         <span class="icon-[ic--baseline-sms-failed]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Modal</a>
                     </li>
-                    <li class="item px-4 hover:bg-[#F2F8FC] py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[ic--baseline-sms-failed]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="./components/spinner.html">Spinner</a>
                     </li>
@@ -179,18 +183,32 @@
         </div>
     </div>
     <!-- END CONTENT -->
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen wrapper">
+        <div class="item">
+            <div class="spinner"></div>
+            <div class="header"></div>
+            <div class="body">Don't close this tab</div>
+            <div class="footer">
+                <button type="button" class="btn btn-primary" id="disable-loading">Batal</button>
+            </div>
+        </div>
+    </div>
+    <!-- END LOADING SCREEN -->
+
     <!-- MODAL -->
-    <div id="modal-example" class="modal fixed inset-0 z-[99999] bg-[rgba(0,0,0,0.7)] transition-all flex justify-center items-center opacity-0 pointer-events-none">
+    <div id="modal-example" class="modal zoom">
         <div class="modal-dialog bg-white border rounded-lg shadow-lg w-[50%]">
             <div class="modal-content w-full px-5 flex flex-col gap-3">
                 <div class="modal-header py-5 flex border-b justify-between">
                     <div class="title font-bold text-2xl ">Modal</div>
-                    <div class="btn-close cursor-pointer">Close</div>
+                    <div class="btn-close cursor-pointer" data-dismiss="modal">Close</div>
                 </div>
                 <div class="modal-body">e</div>
                 <div class="modal-footer py-5 flex border-t justify-end">
                     <div class="flex gap-3">
-                        <div class="alert alert-primary bg-[#2987C2] w-full rounded-lg px-4 py-2 text-white cursor-pointer" data-dismiss="modal">Submit</div>
+                        <div class="alert alert-primary bg-primary w-full rounded-lg px-4 py-2 text-white cursor-pointer" data-dismiss="modal">Submit</div>
                     </div>
                 </div>
             </div>
