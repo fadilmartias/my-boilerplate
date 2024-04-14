@@ -349,6 +349,26 @@ button:disabled,
     @apply flex w-full justify-between my-5;
 }
 
+.dt-input {
+    @apply block p-2 ps-4 text-sm dark:text-white text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-primary dark:focus:border-primary focus:outline-primary dark:focus:outline-primary;
+}
+
+.dt-paging-button {
+    @apply flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white  aria-disabled:opacity-65 aria-disabled:pointer-events-none;
+}
+
+.dt-paging-button.first {
+    @apply ms-0;
+}
+
+.dt-paging-button.current {
+    @apply  text-blue-600 bg-blue-50 hover:bg-blue-100 hover:text-blue-700  dark:bg-gray-700 dark:text-white;
+}
+
+.dt-paging-button.last {
+    @apply rounded-e-lg;
+}
+
 [type='search'] {
     /* -webkit-appearance: textfield; */
     /* 1 */

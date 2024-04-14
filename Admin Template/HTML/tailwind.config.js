@@ -11,6 +11,7 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
+      blue: colors.blue,
       hover: "rgb(var(--color-hover) / 1)",
       "hover-dark": "rgb(var(--color-hover-dark) / 1)",
       primary: "rgb(var(--color-primary) / 1)",
