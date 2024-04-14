@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blank Page</title>
     <link href="../assets/styles/output.css" rel="stylesheet">
+    <!-- <link href="../assets/library/dataTables/datatables.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../assets/library/animate-css/animate.min.css" />
     <link rel="icon" href="../assets/favicon.svg">
 </head>
 
 <body class="">
     <!-- TOPBAR -->
-    <nav class=" topbar active fixed top-0 h-16 w-full border-b border-b-border flex items-center transition-all">
+    <nav class=" topbar active fixed top-0 h-16 w-full border-b border-b-border flex items-center transition-all z-10">
         <div class="wrapper w-full flex justify-between items-center h-full px-6 py-2">
             <div class="left-items">
                 <div class="btn-close-topbar cursor-pointer">
@@ -51,7 +53,8 @@
     </nav>
     <!-- END TOPBAR -->
     <!-- SIDEBAR -->
-    <aside class="sidebar active text-sm fixed left-0 h-screen bg-white border-r border-r-border transition-all overflow-y-auto">
+    <aside
+        class="sidebar active text-sm fixed left-0 h-screen bg-white border-r border-r-border transition-all overflow-y-auto z-10">
         <div class="wrapper flex flex-col gap-4">
             <div class="group-items flex flex-col gap-4">
                 <div class="title font-bold text-gray-500 cursor-default">
@@ -64,7 +67,7 @@
                     </li>
                     <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[lets-icons--table]" style="width: 16px; height: 16px;"></span>
-                        <a class="block w-full" href="#">Tabel</a>
+                        <a class="block w-full" href="./tables/table.html">Table</a>
                     </li>
                 </ul>
             </div>
@@ -98,8 +101,7 @@
                     Pages
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li
-                        class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3 active">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3 active">
                         <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="index.html">Black Page</a>
                     </li>
@@ -115,8 +117,7 @@
                             </div>
                         </div>
                         <ul class="dropdown-items ml-5">
-                            <li><a href="./error/404.html"
-                                    class="block px-4 py-2 rounded-2xl hover:bg-hover">404</a>
+                            <li><a href="./error/404.html" class="block px-4 py-2 rounded-2xl hover:bg-hover">404</a>
                             </li>
                             <li><a href="#" class="block px-4 py-2 rounded-2xl hover:bg-hover">403</a>
                             </li>
@@ -150,11 +151,13 @@
                         <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="./components/button.html">Button</a>
                     </li>
-                    <li id="loading-screen" class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li id="loading-screen"
+                        class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3">
                         <span class="icon-[mdi--success]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" class="">Loading Screen</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3" data-toggle="modal" data-target="#modal-example">
+                    <li class="item px-4 hover:bg-hover py-2 rounded-2xl cursor-pointer flex items-center gap-3"
+                        data-toggle="modal" data-target="#modal-example">
                         <span class="icon-[ic--baseline-sms-failed]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Modal</a>
                     </li>
@@ -170,7 +173,7 @@
     <!-- END SIDEBAR -->
 
     <!-- CONTENT -->
-    <div class="content-wrapper pl-60 pt-16">
+    <div class="content-wrapper pl-60 pt-16 animate__animated animate__fadeInUp animate__fast">
         <div class="content p-6">
             <div class="header flex gap-8 items-end mb-6">
                 <div class="title font-bold text-2xl pb-0 mb-0 align-text-bottom">Blank Page</div>
@@ -178,7 +181,164 @@
                 </div>
             </div>
             <div class="body">
-                Kosong
+                <div class="relative overflow-x-auto">
+                    <div id="table_wrapper" class="dt-container dt-empty-footer">
+                        <div class="dt-layout-row">
+                            <div class="dt-layout-cell dt-start ">
+                                <div class="dt-length"><select name="table_length" aria-controls="table"
+                                        class="dt-input" id="dt-length-0">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select><label for="dt-length-0"> entries per page</label></div>
+                            </div>
+                            <div class="dt-layout-cell dt-end ">
+                                <div class="dt-search"><label for="dt-search-0">Search:</label><input type="search"
+                                        class="dt-input" id="dt-search-0" placeholder="" aria-controls="table"></div>
+                            </div>
+                        </div>
+                        <div class="dt-layout-row dt-layout-table">
+                            <div class="dt-layout-cell ">
+                                <table id="table"
+                                    class="w-full text-sm shadow-md sm:rounded-lg text-left rtl:text-right text-gray-500 dark:text-gray-400 dataTable"
+                                    aria-describedby="table_info" style="width: 1624px;">
+                                    <colgroup>
+                                        <col style="width: 509.672px;">
+                                        <col style="width: 298.812px;">
+                                        <col style="width: 373.906px;">
+                                        <col style="width: 277.125px;">
+                                        <col style="width: 164.484px;">
+                                    </colgroup>
+                                    <thead
+                                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr role="row">
+                                            <th scope="col"
+                                                class="px-6 py-3 dt-orderable-asc dt-orderable-desc dt-ordering-asc"
+                                                data-dt-column="0" rowspan="1" colspan="1" aria-sort="ascending"
+                                                aria-label="
+                                    Product name
+                                : Activate to invert sorting" tabindex="0"><span class="dt-column-title" role="button">
+                                                    Product name
+                                                </span><span class="dt-column-order"></span></th>
+                                            <th scope="col" class="px-6 py-3 dt-orderable-asc dt-orderable-desc"
+                                                data-dt-column="1" rowspan="1" colspan="1" aria-label="
+                                    Color
+                                : Activate to sort" tabindex="0"><span class="dt-column-title" role="button">
+                                                    Color
+                                                </span><span class="dt-column-order"></span></th>
+                                            <th scope="col" class="px-6 py-3 dt-orderable-asc dt-orderable-desc"
+                                                data-dt-column="2" rowspan="1" colspan="1" aria-label="
+                                    Category
+                                : Activate to sort" tabindex="0"><span class="dt-column-title" role="button">
+                                                    Category
+                                                </span><span class="dt-column-order"></span></th>
+                                            <th scope="col"
+                                                class="px-6 py-3 dt-type-numeric dt-orderable-asc dt-orderable-desc"
+                                                data-dt-column="3" rowspan="1" colspan="1" aria-label="
+                                    Price
+                                : Activate to sort" tabindex="0"><span class="dt-column-title" role="button">
+                                                    Price
+                                                </span><span class="dt-column-order"></span></th>
+                                            <th scope="col" class="px-6 py-3 dt-orderable-asc dt-orderable-desc"
+                                                data-dt-column="4" rowspan="1" colspan="1" aria-label="
+                                    Edit
+                                : Activate to sort" tabindex="0"><span class="dt-column-title" role="button">
+                                                    <span class="sr-only">Edit</span>
+                                                </span><span class="dt-column-order"></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <td scope="row"
+                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white sorting_1">
+                                                Apple MacBook Pro 17"
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                Silver
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                Laptop
+                                            </td>
+                                            <td class="px-6 py-4 dt-type-numeric">
+                                                $2999
+                                            </td>
+                                            <td class="px-6 py-4 text-right">
+                                                <a href="#"
+                                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <th scope="row"
+                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white sorting_1">
+                                                Magic Mouse 2
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                Black
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                Accessories
+                                            </td>
+                                            <td class="px-6 py-4 dt-type-numeric">
+                                                $99
+                                            </td>
+                                            <td class="px-6 py-4 text-right">
+                                                <a href="#"
+                                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <th scope="row"
+                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white sorting_1">
+                                                Microsoft Surface Pro
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                White
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                Laptop PC
+                                            </td>
+                                            <td class="px-6 py-4 dt-type-numeric">
+                                                $1999
+                                            </td>
+                                            <td class="px-6 py-4 text-right">
+                                                <a href="#"
+                                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="dt-layout-row">
+                            <div class="dt-layout-cell dt-start ">
+                                <div class="dt-info" aria-live="polite" id="table_info" role="status">Showing 1 to 3 of
+                                    3 entries</div>
+                            </div>
+                            <div class="dt-layout-cell dt-end ">
+                                <div class="dt-paging paging_full_numbers"><button
+                                        class="dt-paging-button disabled first" role="link" type="button"
+                                        aria-controls="table" aria-disabled="true" aria-label="First"
+                                        data-dt-idx="first" tabindex="-1">«</button><button
+                                        class="dt-paging-button disabled previous" role="link" type="button"
+                                        aria-controls="table" aria-disabled="true" aria-label="Previous"
+                                        data-dt-idx="previous" tabindex="-1">‹</button><button
+                                        class="dt-paging-button current" role="link" type="button" aria-controls="table"
+                                        aria-current="page" data-dt-idx="0" tabindex="0">1</button><button
+                                        class="dt-paging-button disabled next" role="link" type="button"
+                                        aria-controls="table" aria-disabled="true" aria-label="Next" data-dt-idx="next"
+                                        tabindex="-1">›</button><button class="dt-paging-button disabled last"
+                                        role="link" type="button" aria-controls="table" aria-disabled="true"
+                                        aria-label="Last" data-dt-idx="last" tabindex="-1">»</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -208,7 +368,8 @@
                 <div class="modal-body">e</div>
                 <div class="modal-footer py-5 flex border-t justify-end">
                     <div class="flex gap-3">
-                        <div class="alert alert-primary bg-primary w-full rounded-lg px-4 py-2 text-white cursor-pointer" data-dismiss="modal">Submit</div>
+                        <div class="alert alert-primary bg-primary w-full rounded-lg px-4 py-2 text-white cursor-pointer"
+                            data-dismiss="modal">Submit</div>
                     </div>
                 </div>
             </div>
@@ -216,7 +377,17 @@
     </div>
     <!-- END MODAL -->
     <script src="../assets/library/jquery/jquery-3.7.1.js"></script>
+    <!-- <script src="../assets/library/dataTables/datatables.min.js"></script> -->
     <script src="../assets/scripts/script.js"></script>
+    <script>
+        let table = new DataTable('#table', {
+            // paging: false,
+            // searching: false,
+            // ordering: true,
+            // info: false
+        });
+
+    </script>
 
 </body>
 
