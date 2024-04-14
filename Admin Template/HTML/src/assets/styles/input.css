@@ -9,6 +9,7 @@
 @layer base {
     :root {
         --color-hover: 242 248 252;
+        --color-hover-dark: 0 81 89;
         --color-primary: 0 169 255;
         --color-secondary: 137 207 243;
         --color-tertiary: 160 233 255;
@@ -24,6 +25,9 @@
         --color-danger-hover: 225 45 45;
         --color-success-hover: 22 157 74;
         --color-border: 228 228 231;
+        --color-border-dark: 119 119 119;
+
+
     }
 }
 
@@ -273,11 +277,11 @@ button:disabled,
 /* END BUTTON */
 
 .divider {
-    @apply h-[1px] w-full bg-border;
+    @apply h-[1px] w-full bg-border dark:bg-border-dark;
 }
 
 .hover {
-    @apply bg-hover;
+    @apply bg-hover dark:bg-hover-dark;
 }
 
 .topbar.active {
@@ -289,7 +293,7 @@ button:disabled,
 }
 
 .sidebar .item.active {
-    @apply bg-hover font-bold text-primary;
+    @apply bg-hover dark:bg-hover-dark font-bold text-primary;
 }
 
 .dropdown-items {
@@ -341,3 +345,13 @@ button:disabled,
 } */
 /* END MODAL */
 
+.dt-layout-row {
+    @apply flex w-full justify-between my-5;
+}
+
+[type='search'] {
+    /* -webkit-appearance: textfield; */
+    /* 1 */
+    outline-offset: 0px;
+    /* 2 */
+  }

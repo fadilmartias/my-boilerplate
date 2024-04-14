@@ -2,6 +2,7 @@ const { addDynamicIconSelectors } = require("@iconify/tailwind");
 const colors = require('tailwindcss/colors')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'selector',
   content: ["./src/**/*.{html,js}"],
   theme: {
     colors: {
@@ -11,6 +12,7 @@ module.exports = {
       white: colors.white,
       gray: colors.gray,
       hover: "rgb(var(--color-hover) / 1)",
+      "hover-dark": "rgb(var(--color-hover-dark) / 1)",
       primary: "rgb(var(--color-primary) / 1)",
       secondary: "rgb(var(--color-secondary) / 1)",
       tertiary: "rgb(var(--color-tertiary) / 1)",
@@ -26,6 +28,7 @@ module.exports = {
       "danger-hover": "rgb(var(--color-danger-hover) / 1)",
       "success-hover": "rgb(var(--color-success-hover) / 1)",
       border: "rgb(var(--color-border) / 1)",
+      "border-dark": "rgb(var(--color-border-dark) / 1)",
     },
     extend: {},
   },
