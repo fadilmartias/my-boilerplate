@@ -17,12 +17,12 @@
         <div class="wrapper w-full flex justify-between items-center h-full px-6 py-2">
             <div class="left-items">
                 <div class="btn-close-topbar cursor-pointer">
-                    <span class="icon-[solar--hamburger-menu-linear]" style="width: 24px; height: 24px;"></span>
+                    <span class="sidebar-icon icon-[solar--hamburger-menu-linear]" style="width: 24px; height: 24px;"></span>
                 </div>
             </div>
             <div class="right-items">
                 <div class="user relative">
-                    <div class="user-info flex gap-3 cursor-pointer">
+                    <div class="user-info dropdown-toggle flex gap-3 cursor-pointer" data-toggle="dropdown">
                         <div class="info text-right">
                             <div class="text-sm font-semibold">M. Fadil Martias</div>
                             <div class="text-xs">Admin</div>
@@ -30,17 +30,17 @@
                         <div class="avatar w-11 h-11 rounded-full bg-primary"></div>
                     </div>
                     <div
-                        class="dropdown text-black dark:text-white bg-white dark:bg-gray-700 absolute w-full top-full mt-1 border rounded-xl bg-white shadow-lg pointer-events-none opacity-0 transition-opacity">
-                        <ul class="group-items flex flex-col rounded-xl ">
+                        class="dropdown text-black dark:text-white bg-white dark:bg-gray-700 absolute w-full top-full mt-1 border rounded-xl shadow-lg pointer-events-none opacity-0 transition-opacity">
+                        <ul class="dropdown-menu flex flex-col rounded-xl" id="dropdown_user_info">
                             <li
-                                class="item flex cursor-pointer items-center gap-3 px-4 py-2 hover:bg-hover dark:hover:bg-hover-dark rounded-t-lg">
+                                class="dropdown-item flex cursor-pointer items-center gap-3 px-4 py-2 hover:bg-hover dark:hover:bg-hover-dark hover:rounded-t-xl">
                                 <span class="icon-[lets-icons--setting-alt-line]"
                                     style="width: 16px; height: 16px;"></span>
                                 <a class="block w-full" href="#">Setting</a>
                             </li>
                             <div class="divider"></div>
                             <li
-                                class="item flex cursor-pointer items-center gap-3 text-red-600 hover:bg-hover dark:hover:bg-hover-dark rounded-b-lg px-4 py-2">
+                                class="dropdown-item flex cursor-pointer items-center gap-3 text-red-600 hover:bg-hover dark:hover:bg-hover-dark hover:rounded-b-xl px-4 py-2">
                                 <span class="icon-[majesticons--logout-line] rotate-180"
                                     style="width: 16px; height: 16px;"></span>
                                 <a class="block w-full" href="./auth/login.html">Log Out</a>

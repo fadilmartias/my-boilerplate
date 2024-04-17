@@ -7,6 +7,7 @@ document
       document
         .querySelector(".content-wrapper")
         .classList.replace("pl-60", "pl-0");
+      document.querySelector(".sidebar-icon").classList.replace(`icon-[solar--hamburger-menu-linear]`, `icon-[formkit--arrowright]`)
       document
         .querySelector(".sidebar .wrapper")
         .classList.replace("flex", "hidden");
@@ -16,24 +17,28 @@ document
       document
         .querySelector(".content-wrapper")
         .classList.replace("pl-0", "pl-60");
+        document.querySelector(".sidebar-icon").classList.replace(`icon-[formkit--arrowright]`, `icon-[solar--hamburger-menu-linear]`)
       document
         .querySelector(".sidebar .wrapper")
         .classList.replace("hidden", "flex");
     }
   });
-document.addEventListener("click", function (event) {
-  const dropdown = document.querySelector(".dropdown");
-  const userInfo = document.querySelector(".user-info");
 
-  // Jika yang diklik bukan bagian dari dropdown atau user-info
-  if (!dropdown.contains(event.target) && !userInfo.contains(event.target)) {
-    dropdown.classList.remove("active");
-  }
+$('[data-toggle="dropdown"]').click(function (event) {
+  event.stopPropagation(); // Menghentikan propagasi event agar tidak memicu event document click
+  var dropdown = $(this).next(".dropdown");
+  dropdown.toggleClass("active");
 });
 
-document.querySelector(".user-info").addEventListener("click", function () {
-  const dropdown = document.querySelector(".dropdown");
-  dropdown.classList.toggle("active");
+$(document).click(function (event) {
+  var dropdown = $(".dropdown.active");
+  if (
+    !dropdown.is(event.target) &&
+    dropdown.has(event.target).length === 0 &&
+    $('[data-toggle="dropdown"]').has(event.target).length === 0
+  ) {
+    dropdown.removeClass("active");
+  }
 });
 
 // document.querySelectorAll(".dropdown-sidebar").forEach(function (element) {

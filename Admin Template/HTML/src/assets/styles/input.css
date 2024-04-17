@@ -9,7 +9,7 @@
 @layer base {
     :root {
         --color-hover: 242 248 252;
-        --color-hover-dark: 0 81 89;
+        --color-hover-dark:0 81 89;
         --color-primary: 0 169 255;
         --color-secondary: 137 207 243;
         --color-tertiary: 160 233 255;
@@ -25,10 +25,48 @@
         --color-danger-hover: 225 45 45;
         --color-success-hover: 22 157 74;
         --color-border: 228 228 231;
-        --color-border-dark: 119 119 119;
+        --color-border-dark:119 119 119;
 
 
     }
+
+    /* Untuk scrollbar berbasis WebKit (Chrome, Safari) */
+    /* Track */
+    ::-webkit-scrollbar {
+        width: 8px;
+        /* Lebar scrollbar */
+    }
+
+    /* Thumb */
+    ::-webkit-scrollbar-thumb {
+        background-color: #888;
+        /* Warna latar belakang thumb */
+        border-radius: 6px;
+        /* Sudut membulat pada thumb */
+        border: 3px solid #fff;
+        /* Garis tepi thumb */
+    }
+
+    /* Menghilangkan panah atas dan bawah */
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    /* Track dengan border radius */
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+        /* Sudut membulat pada track */
+    }
+
+    /* Untuk scrollbar berbasis Firefox */
+    /* Track */
+    * {
+        scrollbar-width: thin;
+        /* Lebar scrollbar */
+        scrollbar-color: #888 #fff;
+        /* Warna latar belakang dan tepi thumb */
+    }
+
 }
 
 body.modal-open {
@@ -296,14 +334,6 @@ button:disabled,
     @apply bg-hover dark:bg-hover-dark font-bold text-primary;
 }
 
-.dropdown-items {
-    @apply max-h-0 overflow-hidden;
-}
-
-.dropdown-items.active {
-    @apply max-h-full overflow-auto;
-}
-
 .dropdown.active {
     @apply opacity-100 pointer-events-auto;
 }
@@ -361,12 +391,16 @@ button:disabled,
     @apply flex w-full justify-between my-5;
 }
 
-.dt-input {
+.dt-length .dt-input {
+    @apply text-sm dark:text-white text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-primary dark:focus:border-primary focus:outline-primary dark:focus:outline-primary;
+}
+
+.dt-search .dt-input {
     @apply block p-2 ps-4 text-sm dark:text-white text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-primary dark:focus:border-primary focus:outline-primary dark:focus:outline-primary;
 }
 
 .dt-paging-button {
-    @apply flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white  aria-disabled:opacity-65 aria-disabled:pointer-events-none;
+    @apply flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white aria-disabled:opacity-65 aria-disabled:pointer-events-none;
 }
 
 .dt-paging-button.first {
@@ -374,7 +408,7 @@ button:disabled,
 }
 
 .dt-paging-button.current {
-    @apply  text-blue-600 bg-blue-50 hover:bg-blue-100 hover:text-blue-700  dark:bg-gray-700 dark:text-white;
+    @apply text-blue-600 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:bg-gray-700 dark:text-white;
 }
 
 .dt-paging-button.last {
@@ -386,4 +420,4 @@ button:disabled,
     /* 1 */
     outline-offset: 0px;
     /* 2 */
-  }
+}

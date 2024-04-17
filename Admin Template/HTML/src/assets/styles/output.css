@@ -448,7 +448,7 @@ video {
 
 :root {
   --color-hover: 242 248 252;
-  --color-hover-dark: 0 81 89;
+  --color-hover-dark:0 81 89;
   --color-primary: 0 169 255;
   --color-secondary: 137 207 243;
   --color-tertiary: 160 233 255;
@@ -464,7 +464,51 @@ video {
   --color-danger-hover: 225 45 45;
   --color-success-hover: 22 157 74;
   --color-border: 228 228 231;
-  --color-border-dark: 119 119 119;
+  --color-border-dark:119 119 119;
+}
+
+/* Untuk scrollbar berbasis WebKit (Chrome, Safari) */
+
+/* Track */
+
+::-webkit-scrollbar {
+  width: 8px;
+  /* Lebar scrollbar */
+}
+
+/* Thumb */
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Warna latar belakang thumb */
+  border-radius: 6px;
+  /* Sudut membulat pada thumb */
+  border: 3px solid #fff;
+  /* Garis tepi thumb */
+}
+
+/* Menghilangkan panah atas dan bawah */
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Track dengan border radius */
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  /* Sudut membulat pada track */
+}
+
+/* Untuk scrollbar berbasis Firefox */
+
+/* Track */
+
+* {
+  scrollbar-width: thin;
+  /* Lebar scrollbar */
+  scrollbar-color: #888 #fff;
+  /* Warna latar belakang dan tepi thumb */
 }
 
 *, ::before, ::after {
@@ -631,6 +675,20 @@ video {
   .container {
     max-width: 1536px;
   }
+}
+
+.icon-\[formkit--arrowright\] {
+  display: inline-block;
+  width: 1.78em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9' width='16' height='9'%3E%3Cpath fill='black' d='M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5'/%3E%3Cpath fill='black' d='M10 8.5a.47.47 0 0 1-.35-.15c-.2-.2-.2-.51 0-.71l3.15-3.15l-3.15-3.15c-.2-.2-.2-.51 0-.71c.2-.2.51-.2.71 0l3.5 3.5c.2.2.2.51 0 .71l-3.5 3.5c-.1.1-.23.15-.35.15Z'/%3E%3C/svg%3E");
 }
 
 .icon-\[ic--baseline-sms-failed\] {
@@ -1314,11 +1372,6 @@ video {
   border-radius: 0.75rem;
 }
 
-.rounded-b-lg {
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-}
-
 .rounded-e-lg {
   border-start-end-radius: 0.5rem;
   border-end-end-radius: 0.5rem;
@@ -1327,11 +1380,6 @@ video {
 .rounded-s-lg {
   border-start-start-radius: 0.5rem;
   border-end-start-radius: 0.5rem;
-}
-
-.rounded-t-lg {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
 }
 
 .border {
@@ -2028,16 +2076,6 @@ button:disabled,
   background-color: rgb(var(--color-hover-dark) / 1);
 }
 
-.dropdown-items {
-  max-height: 0px;
-  overflow: hidden;
-}
-
-.dropdown-items.active {
-  max-height: 100%;
-  overflow: auto;
-}
-
 .dropdown.active {
   pointer-events: auto;
   opacity: 1;
@@ -2127,7 +2165,51 @@ button:disabled,
   justify-content: space-between;
 }
 
-.dt-input {
+.dt-length .dt-input {
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.dt-length .dt-input:focus {
+  border-color: rgb(var(--color-primary) / 1);
+  outline-color: rgb(var(--color-primary) / 1);
+  --tw-ring-color: rgb(var(--color-primary) / 1);
+}
+
+.dt-length .dt-input:where(.dark, .dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.dt-length .dt-input:where(.dark, .dark *)::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+}
+
+.dt-length .dt-input:where(.dark, .dark *)::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+}
+
+.dt-length .dt-input:focus:where(.dark, .dark *) {
+  border-color: rgb(var(--color-primary) / 1);
+  outline-color: rgb(var(--color-primary) / 1);
+  --tw-ring-color: rgb(var(--color-primary) / 1);
+}
+
+.dt-search .dt-input {
   display: block;
   width: 20rem;
   border-radius: 0.5rem;
@@ -2144,13 +2226,13 @@ button:disabled,
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.dt-input:focus {
+.dt-search .dt-input:focus {
   border-color: rgb(var(--color-primary) / 1);
   outline-color: rgb(var(--color-primary) / 1);
   --tw-ring-color: rgb(var(--color-primary) / 1);
 }
 
-.dt-input:where(.dark, .dark *) {
+.dt-search .dt-input:where(.dark, .dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -2159,17 +2241,17 @@ button:disabled,
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.dt-input:where(.dark, .dark *)::-moz-placeholder {
+.dt-search .dt-input:where(.dark, .dark *)::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
-.dt-input:where(.dark, .dark *)::placeholder {
+.dt-search .dt-input:where(.dark, .dark *)::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
 }
 
-.dt-input:focus:where(.dark, .dark *) {
+.dt-search .dt-input:focus:where(.dark, .dark *) {
   border-color: rgb(var(--color-primary) / 1);
   outline-color: rgb(var(--color-primary) / 1);
   --tw-ring-color: rgb(var(--color-primary) / 1);
@@ -2255,6 +2337,16 @@ button:disabled,
   /* 1 */
   outline-offset: 0px;
   /* 2 */
+}
+
+.hover\:rounded-b-xl:hover {
+  border-bottom-right-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+}
+
+.hover\:rounded-t-xl:hover {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
 }
 
 .hover\:bg-\[\#3078a5\]:hover {
