@@ -107,7 +107,7 @@
                     </li>
                     <li class="item">
                         <div
-                            class="relative hover:bg-hover dark:hover:bg-hover-dark dropdown-sidebar item px-4 py-2 rounded-2xl cursor-pointer flex items-center justify-between gap-3">
+                            class="collapse-sidebar relative hover:bg-hover dark:hover:bg-hover-dark item px-4 py-2 rounded-2xl cursor-pointer flex items-center justify-between gap-3" data-toggle="collapse" data-target="#error_collapse_item">
                             <div class="left-items flex items-center justify-between gap-3">
                                 <span class="icon-[tabler--error-404]" style="width: 16px; height: 16px;"></span>
                                 <a class="block w-full" href="#">Error Pages</a>
@@ -116,7 +116,7 @@
                                 <span class="icon-[iconoir--nav-arrow-right]" style="width: 16px; height: 16px;"></span>
                             </div>
                         </div>
-                        <ul class="dropdown-items ml-5">
+                        <ul class="collapse-items ml-5" id="error_collapse_item">
                             <li><a href="./error/404.html" class="block px-4 py-2 rounded-2xl hover:bg-hover dark:hover:bg-hover-dark">404</a>
                             </li>
                             <li><a href="#" class="block px-4 py-2 rounded-2xl hover:bg-hover dark:hover:bg-hover-dark">403</a>

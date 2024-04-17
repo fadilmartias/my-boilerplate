@@ -308,6 +308,18 @@ button:disabled,
     @apply opacity-100 pointer-events-auto;
 }
 
+.collapse-items {
+    @apply h-0 max-h-0 overflow-hidden transition-all duration-300 delay-0;
+}
+
+.collapse-items.active {
+    @apply h-full max-h-[1000px];
+}
+
+.collapse.active {
+    @apply opacity-100 pointer-events-auto;
+}
+
 /* .card-register .right-content {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 16px;

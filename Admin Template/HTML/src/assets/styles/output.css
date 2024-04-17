@@ -2043,6 +2043,26 @@ button:disabled,
   opacity: 1;
 }
 
+.collapse-items {
+  height: 0px;
+  max-height: 0px;
+  overflow: hidden;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0s;
+  transition-duration: 300ms;
+}
+
+.collapse-items.active {
+  height: 100%;
+  max-height: 1000px;
+}
+
+.collapse.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
 /* .card-register .right-content {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 16px;

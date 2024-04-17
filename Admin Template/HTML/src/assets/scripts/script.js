@@ -36,12 +36,12 @@ document.querySelector(".user-info").addEventListener("click", function () {
   dropdown.classList.toggle("active");
 });
 
-document.querySelectorAll(".dropdown-sidebar").forEach(function (element) {
-  element.addEventListener("click", function () {
-    const dropdownContent = this.nextElementSibling;
-    dropdownContent.classList.toggle("active");
-  });
-});
+// document.querySelectorAll(".dropdown-sidebar").forEach(function (element) {
+//   element.addEventListener("click", function () {
+//     const dropdownContent = this.nextElementSibling;
+//     dropdownContent.classList.toggle("active");
+//   });
+// });
 
 // Daftar breadcrumb yang akan ditampilkan
 const breadcrumbItems = ["Components", "Blank Page"]; // Anda bisa mengubah array ini sesuai dengan kebutuhan
@@ -72,22 +72,22 @@ $(document).ready(function () {
     var targetModal = $(this).attr("data-target"); // Mendapatkan nilai dari atribut data-target yang diklik
     $(targetModal).addClass("active"); // Menampilkan modal
     $("body").addClass("modal-open"); // Menambahkan class untuk mencegah scrolling background
-});
+  });
 
   $('[data-dismiss="modal"]').click(function () {
     // Menemukan modal yang sedang aktif dan menutupnya
     $(this).closest(".modal").removeClass("active");
     $("body").removeClass("modal-open"); // Menambahkan class untuk mencegah scrolling background
-});
+  });
 
   // Fungsi untuk modal
   $.fn.modal = function (type) {
-    if(type === 'show') {
-        $(this).addClass("active");
-        $("body").addClass("modal-open"); // Menambahkan class untuk mencegah scrolling background
-    } else if(type === 'hide') {
-        $(this).removeClass("active");
-        $("body").removeClass("modal-open"); // Menambahkan class untuk mencegah scrolling background
+    if (type === "show") {
+      $(this).addClass("active");
+      $("body").addClass("modal-open"); // Menambahkan class untuk mencegah scrolling background
+    } else if (type === "hide") {
+      $(this).removeClass("active");
+      $("body").removeClass("modal-open"); // Menambahkan class untuk mencegah scrolling background
     }
   };
 
@@ -96,5 +96,11 @@ $(document).ready(function () {
   });
   $("#disable-loading").click(function () {
     $(".loading-screen.wrapper").toggleClass("active");
+  });
+
+  // Menambahkan event listener untuk semua elemen dengan data-toggle="modal"
+  $('[data-toggle="collapse"]').click(function () {
+    var targetCollapse = $(this).attr("data-target"); // Mendapatkan nilai dari atribut data-target yang diklik
+    $(targetCollapse).toggleClass("active"); // Menampilkan collapse
   });
 });
