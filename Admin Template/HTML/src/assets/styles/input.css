@@ -259,7 +259,7 @@ body.modal-open {
 
 /* BUTTON */
 .btn {
-    @apply px-4 py-2 border rounded-lg cursor-pointer;
+    @apply px-4 py-2 border-none outline-none rounded-lg cursor-pointer;
 }
 
 button:disabled,
@@ -322,16 +322,76 @@ button:disabled,
     @apply bg-hover dark:bg-hover-dark;
 }
 
+.topbar {
+    @apply text-black dark:text-white bg-white dark:bg-gray-700 fixed top-0 h-16 w-full border-b border-b-border dark:border-b-border-dark flex items-center transition-all z-10;
+}
+
 .topbar.active {
     @apply pl-60;
 }
 
-.sidebar.active {
-    @apply w-60 p-6;
+.sidebar {
+    @apply text-black dark:text-white bg-white dark:bg-gray-700 fixed left-0 h-screen border-r border-r-border dark:border-r-border-dark transition-all z-10 overflow-hidden;
 }
+
+.sidebar.can-minimize {
+    @apply w-28 p-3 overflow-y-auto;
+}
+
+.sidebar.active {
+    @apply w-60 p-6 overflow-y-auto;
+}
+
+.sidebar .wrapper {
+    @apply hidden;
+}
+
+.sidebar.can-minimize .wrapper {
+    @apply flex;
+}
+
+.sidebar.active .wrapper {
+    @apply flex;
+}
+
+.sidebar .item {
+    @apply hover:bg-hover py-2 dark:hover:bg-hover-dark  rounded-2xl cursor-pointer flex flex-col items-center gap-3 text-center text-xs;
+}
+
+.sidebar .item-collapse .left-items {
+    @apply flex-col;
+}
+
+.sidebar .item-collapse .right-items {
+    @apply hidden;
+}
+
+.sidebar.active .item {
+    @apply flex-row px-4 text-left text-sm;
+}
+
+.sidebar.active .item-collapse .left-items {
+    @apply flex-row;
+}
+
+.sidebar.active .item-collapse .right-items {
+    @apply block;
+}
+
+.sidebar.can-minimize~.content-wrapper {
+    @apply pl-28;
+}
+.sidebar.active~.content-wrapper {
+    @apply pl-60;
+}
+
 
 .sidebar .item.active {
     @apply bg-hover dark:bg-hover-dark font-bold text-primary;
+}
+
+.dropdown {
+    @apply absolute pointer-events-none opacity-0 transition-opacity;
 }
 
 .dropdown.active {

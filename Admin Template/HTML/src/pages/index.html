@@ -13,7 +13,7 @@
 
 <body class="">
     <!-- TOPBAR -->
-    <nav class="topbar text-black dark:text-white bg-white dark:bg-gray-700 active fixed top-0 h-16 w-full border-b border-b-border dark:border-b-border-dark flex items-center transition-all z-10 ">
+    <nav class="topbar active">
         <div class="wrapper w-full flex justify-between items-center h-full px-6 py-2">
             <div class="left-items">
                 <div class="btn-close-topbar cursor-pointer">
@@ -22,7 +22,7 @@
             </div>
             <div class="right-items">
                 <div class="user relative">
-                    <div class="user-info dropdown-toggle flex gap-3 cursor-pointer" data-toggle="dropdown">
+                    <div class="user-info dropdown-toggle flex gap-3 cursor-pointer" data-toggle="dropdown" data-target="#dropdown_user_info">
                         <div class="info text-right">
                             <div class="text-sm font-semibold">M. Fadil Martias</div>
                             <div class="text-xs">Admin</div>
@@ -30,8 +30,8 @@
                         <div class="avatar w-11 h-11 rounded-full bg-primary"></div>
                     </div>
                     <div
-                        class="dropdown text-black dark:text-white bg-white dark:bg-gray-700 absolute w-full top-full mt-1 border rounded-xl shadow-lg pointer-events-none opacity-0 transition-opacity">
-                        <ul class="dropdown-menu flex flex-col rounded-xl" id="dropdown_user_info">
+                        class="dropdown text-black dark:text-white bg-white dark:bg-gray-700 w-full mt-1 border rounded-xl shadow-lg top-full" id="dropdown_user_info">
+                        <ul class="dropdown-menu flex flex-col rounded-xl">
                             <li
                                 class="dropdown-item flex cursor-pointer items-center gap-3 px-4 py-2 hover:bg-hover dark:hover:bg-hover-dark hover:rounded-t-xl">
                                 <span class="icon-[lets-icons--setting-alt-line]"
@@ -54,18 +54,18 @@
     <!-- END TOPBAR -->
     <!-- SIDEBAR -->
     <aside
-        class="sidebar text-black dark:text-white bg-white dark:bg-gray-700 active text-sm fixed left-0 h-screen bg-white border-r border-r-border dark:border-r-border-dark transition-all overflow-y-auto z-10">
+        class="sidebar active">
         <div class="wrapper flex flex-col gap-4">
             <div class="group-items flex flex-col gap-4">
                 <div class="title font-bold text-gray-500 cursor-default">
                     Menu
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[iconamoon--home]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Dashboard</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[lets-icons--table]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="./tables/table.html">Table</a>
                     </li>
@@ -77,19 +77,19 @@
                     Auth
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[mdi--register]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="../pages/auth/register.html">Register</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[material-symbols--login]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="../pages/auth/login.html">Login</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[mdi--forgot-password]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="../pages/auth/forgot-password.html">Forgot Password</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[mdi--password]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="../pages/auth/reset-password.html">Reset Password</a>
                     </li>
@@ -101,11 +101,11 @@
                     Pages
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3 active">
+                    <li class="item active">
                         <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="index.html">Black Page</a>
                     </li>
-                    <li class="item">
+                    <li class="item-collapse">
                         <div
                             class="collapse-sidebar relative hover:bg-hover dark:hover:bg-hover-dark item px-4 py-2 rounded-2xl cursor-pointer flex items-center justify-between gap-3" data-toggle="collapse" data-target="#error_collapse_item">
                             <div class="left-items flex items-center justify-between gap-3">
@@ -127,11 +127,11 @@
 
                     </li>
 
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[mdi--success]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Success Page</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[ic--baseline-sms-failed]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Error Page</a>
                     </li>
@@ -143,25 +143,25 @@
                     Components
                 </div>
                 <ul class="items flex flex-col gap-2">
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="./components/alert.html">Alert</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[uil--file-blank]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="./components/button.html">Button</a>
                     </li>
                     <li id="loading-screen"
-                        class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                        class="item">
                         <span class="icon-[mdi--success]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" class="">Loading Screen</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3"
+                    <li class="item"
                         data-toggle="modal" data-target="#modal-example">
                         <span class="icon-[ic--baseline-sms-failed]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="#">Modal</a>
                     </li>
-                    <li class="item px-4 hover:bg-hover dark:hover:bg-hover-dark py-2 rounded-2xl cursor-pointer flex items-center gap-3">
+                    <li class="item">
                         <span class="icon-[ic--baseline-sms-failed]" style="width: 16px; height: 16px;"></span>
                         <a class="block w-full" href="./components/spinner.html">Spinner</a>
                     </li>
@@ -173,10 +173,10 @@
     <!-- END SIDEBAR -->
 
     <!-- CONTENT -->
-    <div class="content-wrapper pl-60 pt-16  text-black dark:text-white bg-white dark:bg-gray-700">
+    <div class="content-wrapper pt-16 text-black dark:text-white bg-white dark:bg-gray-700 transition-all">
         <div class="content p-6">
             <div class="header flex gap-8 items-end mb-6">
-                <div class="title font-bold text-2xl pb-0 mb-0 align-text-bottom">Blank Page</div>
+                <h1 class="title font-bold text-2xl pb-0 mb-0 align-text-bottom">Blank Page</h1>
                 <div class="breadcrumb flex gap-1 text-xs align-text-bottom pb-[.25rem]" id="breadcrumb">
                 </div>
             </div>
