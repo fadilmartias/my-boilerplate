@@ -316,7 +316,7 @@ button:disabled,
 /* END BUTTON */
 
 .divider {
-  @apply h-[1px] w-full bg-border dark:bg-border-dark;
+  @apply h-[1px] w-full border;
 }
 
 .hover {
@@ -324,7 +324,7 @@ button:disabled,
 }
 
 .topbar {
-  @apply text-black dark:text-white bg-white dark:bg-gray-700 fixed top-0 h-16 w-full border-b border-b-border dark:border-b-border-dark flex items-center transition-all z-10;
+  @apply text-black dark:text-white bg-white dark:bg-gray-700 fixed top-0 h-16 w-full border-b flex items-center transition-all z-10;
 }
 
 .topbar.active {
@@ -332,7 +332,7 @@ button:disabled,
 }
 
 .sidebar {
-  @apply text-black dark:text-white bg-white dark:bg-gray-700 fixed left-0 h-screen border-r border-r-border dark:border-r-border-dark transition-all z-10 overflow-hidden;
+  @apply text-black dark:text-white bg-white dark:bg-gray-700 fixed left-0 h-screen border-r transition-all z-10 overflow-hidden;
 }
 
 .sidebar.can-minimize {
@@ -356,7 +356,7 @@ button:disabled,
 }
 
 .sidebar .item {
-  @apply hover:bg-hover py-2 dark:hover:bg-hover-dark  rounded-2xl cursor-pointer flex flex-col items-center gap-3 text-center text-xs;
+  @apply hover:bg-primary py-2 dark:hover:bg-primary-dark hover:text-primary-dark rounded-2xl cursor-pointer flex flex-col items-center gap-3 text-center text-xs;
 }
 
 .sidebar .item-collapse .left-items {
@@ -388,7 +388,7 @@ button:disabled,
 
 
 .sidebar .item.active {
-  @apply bg-hover dark:bg-hover-dark font-bold text-primary;
+  @apply bg-primary dark:bg-primary-dark font-bold text-secondary;
 }
 
 .dropdown {
