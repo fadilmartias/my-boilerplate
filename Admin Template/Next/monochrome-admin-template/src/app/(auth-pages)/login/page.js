@@ -34,7 +34,7 @@ const Login = () => {
         </h5>
       </div>
       <form action="" onSubmit={formik.handleSubmit} noValidate>
-        <div className="flex flex-col inputs gap-5">
+        <div className="flex flex-col inputs gap-6">
           <Input
             variant={"floating"}
             type="email"
@@ -64,7 +64,7 @@ const Login = () => {
         <span>
           Don't have an account?{" "}
           <Link
-            className="font-bold text-primary hover:underline"
+            className="font-bold text-primary dark:text-primary-dark hover:underline"
             href="/register"
           >
             Register here

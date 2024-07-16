@@ -20,6 +20,7 @@ module.exports = {
         "warning": "rgb(var(--color-warning) / 1)",
         "warning-hover": "rgb(var(--color-warning-hover) / 1)",
         "danger": "rgb(var(--color-danger) / 1)",
+        "danger-dark": "rgb(var(--color-danger-dark) / 1)",
         "danger-hover": "rgb(var(--color-danger-hover) / 1)",
         "success": "rgb(var(--color-success) / 1)",
         "success-hover": "rgb(var(--color-success-hover) / 1)",

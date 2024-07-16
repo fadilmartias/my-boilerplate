@@ -47,7 +47,7 @@ const Register = () => {
           Start your journey
         </h5>
       </div>
-      <div className="flex flex-col inputs gap-5">
+      <div className="flex flex-col inputs gap-6">
         <Input
           variant={"floating"}
           type="text"
