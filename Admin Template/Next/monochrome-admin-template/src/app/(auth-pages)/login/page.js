@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import Head from "next/head";
 
 const Login = () => {
   const handleSubmit = () => {
@@ -26,7 +27,8 @@ const Login = () => {
     formik.setFieldValue(e.target.name, e.target.value);
   };
   return (
-    <div className="content w-full">
+    <>
+      <div className="content w-full">
       <div className="head mb-8 flex flex-col gap-2">
         <h1 className="text-3xl font-bold">Sign In</h1>
         <h5 className="text-sm text-gray-600 dark:text-primary-dark">
@@ -72,6 +74,7 @@ const Login = () => {
         </span>
       </div>
     </div>
+    </>
   );
 };
 

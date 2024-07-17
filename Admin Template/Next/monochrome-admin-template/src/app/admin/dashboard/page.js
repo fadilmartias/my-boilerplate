@@ -1,8 +1,12 @@
-import AdminSidebar from "@/components/partials/AdminSidebar";
-import AdminTopbar from "@/components/partials/AdminTopbar";
 import React from "react";
 
+export const metadata = {
+  title: "Dasboard",
+  description: 'Dashboard',
+}
+
 const Dashboard = () => {
+  
   return (
     <>
       <div className="content-wrapper pt-16 transition-all">

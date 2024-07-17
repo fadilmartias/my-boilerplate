@@ -75,7 +75,7 @@ const AdminSidebar = () => {
                         open == item.idx
                           ? "opacity-100 max-h-[400px] mt-2 py-2"
                           : "max-h-0 opacity-0"
-                      } bg-white border border-gray-300 overflow-hidden rounded-lg transition-all duration-300 w-full`}
+                      } bg-white overflow-hidden rounded-lg transition-all duration-300 w-full`}
                     >
                       {item.submenu.map((data, idx) => (
                         <Link
