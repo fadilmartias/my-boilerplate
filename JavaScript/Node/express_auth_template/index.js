@@ -1,4 +1,6 @@
 import express from 'express'
+// import { createHandler } from 'graphql-http/lib/use/express';
+// import { schema } from '@/graphql/schema.js'
 import cors from 'cors'
 import helmet from 'helmet'
 import v1 from '@/routes/v1/index.js'
@@ -22,11 +24,12 @@ app.use(bodyParser.json());
 app.use(express.json())
 
 // routes 
+// app.all('/graphql', createHandler({ schema }));
 app.use('/v1', v1)
 app.get("/", (req, res) => {
   res.send("Api Siappp");
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Example app listening on port ${port}, http://127.0.0.1:${port}`)
 })

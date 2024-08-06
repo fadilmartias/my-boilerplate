@@ -3,17 +3,23 @@ import { errorRes } from "@/utils/Response.js"
 
 export const registerValidation = () => {
   return [
-    body('first_name').trim().notEmpty().escape().isString(),
-    body('last_name').trim().notEmpty().escape().isString(),
+    body('name').trim().notEmpty().escape().isString(),
+    body('username').trim().notEmpty().escape().isString(),
     body('email').trim().notEmpty().escape().isEmail(),
+    body('phone').trim().escape(),
     body('password').trim().notEmpty().escape().isString(),
-    body('confPassword').trim().notEmpty().escape().isString(),
+    body('confirm_password').trim().notEmpty().escape().isString().custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Password confirmation does not match password')
+      }
+      return value
+    })
   ]
 }
 
 export const loginValidation = () => {
   return [
-    body('email').trim().notEmpty().escape().isEmail(),
+    body('credential').trim().notEmpty().escape(),
     body('password').trim().notEmpty().escape().isString(),
   ]
 }
@@ -26,5 +32,5 @@ export const validate = (req, res, next) => {
   const extractedErrors = []
   errors.array().map(err => extractedErrors.push({ [err.path]: err.msg }))
 
-  errorRes(extractedErrors, 'Input Invalid', res, 422)
+  return errorRes(res, extractedErrors, 'Input Invalid', 422)
 }

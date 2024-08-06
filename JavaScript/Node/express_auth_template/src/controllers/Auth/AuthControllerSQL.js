@@ -7,11 +7,8 @@ export default class Auth {
   // constructor() {}
 
   register = async (req, res) => {
-    const { name, username, email, phone, password, confirm_password } =
+    const { name, username, email, phone, password } =
       req.body;
-    // console.log(req.body);
-    if (password !== confirm_password)
-      return errorRes(res, null, `Confirm Password Doesn't Match`, 400);
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
     const data = {
@@ -36,7 +33,7 @@ export default class Auth {
     let user;
     try {
       const [rows] = await db.execute("SELECT * FROM users WHERE email = ?", [
-        req.body.email,
+        req.body.credential,
       ]);
       if (rows.length == 0) {
         return errorRes(res, null, "Account not found", 404);
