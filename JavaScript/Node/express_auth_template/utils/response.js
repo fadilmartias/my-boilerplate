@@ -1,22 +1,34 @@
-export const successRes = (data, message, res, statusCode = 200) => {
-  return res.json({
-    status: 1,
+export const successRes = (
+  res,
+  data,
+  message = "Success",
+  statusCode = 200
+) => {
+  const responseData = {
+    success: 1,
     rc: statusCode,
     message: message,
     data: data,
-    metadata: {
-      prev: "",
-      next: "",
-      current: "",
-    },
-  });
+  };
+
+  return res.status(statusCode).json(responseData).end();
 };
 
-export const errorRes = (data, message, res, statusCode) => {
-  return res.json({
-    status: 0,
+export const errorRes = (
+  res,
+  data,
+  message = "Internal Server Error",
+  statusCode = 500
+) => {
+  const responseData = {
+    success: 0,
     rc: statusCode,
     message: message,
-    data: data,
-  });
+  };
+
+  if (data !== undefined && data !== null && data.length > 0 && data !== "") {
+    responseData.data = data;
+  }
+
+  return res.status(statusCode).json(responseData).end();
 };
