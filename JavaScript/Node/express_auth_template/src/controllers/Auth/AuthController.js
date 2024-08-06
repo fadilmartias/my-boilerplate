@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { errorRes, successRes } from "../../utils/response.js";
-import { db } from "../../config/database.js";
+import { errorRes, successRes } from "@/utils/response.js";
+import { db } from "@/config/database.js";
 
 export default class Auth {
   // constructor() {}

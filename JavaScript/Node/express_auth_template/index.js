@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
-import AuthRoute from './routes/Auth/Route.js'
+import * as v1 from './routes/v1/index.js'
 import dotenv from "dotenv";
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
@@ -21,8 +21,8 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json())
 
-// routes
-app.use('/auth', AuthRoute)
+// routes 
+app.use('/v1', v1.)
 app.get("/", (req, res) => {
   res.send("Api Siappp");
 });

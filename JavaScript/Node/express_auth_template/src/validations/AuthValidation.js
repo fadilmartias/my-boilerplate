@@ -1,5 +1,5 @@
 import { body, validationResult } from "express-validator"
-import { errorRes } from "../utils/response.js"
+import { errorRes } from "@/utils/response.js"
 
 export const registerValidation = () => {
   return [
