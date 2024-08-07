@@ -1,36 +1,48 @@
-import { body, validationResult } from "express-validator"
-import { errorRes } from "@/utils/Response.js"
+import Joi from 'joi';
+import DOMPurify from 'dompurify';
+import { errorRes } from '@/utils/Response.js';
 
-export const registerValidation = () => {
-  return [
-    body('name').trim().notEmpty().escape().isString(),
-    body('username').trim().notEmpty().escape().isString(),
-    body('email').trim().notEmpty().escape().isEmail(),
-    body('phone').trim().escape(),
-    body('password').trim().notEmpty().escape().isString(),
-    body('confirm_password').trim().notEmpty().escape().isString().custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error('Password confirmation does not match password')
-      }
-      return value
-    })
-  ]
-}
+const registerSchema = Joi.object({
+  name: Joi.string().trim().required(),
+  username: Joi.string().trim().required(),
+  email: Joi.string().trim().email().required(),
+  phone: Joi.string().trim(),
+  password: Joi.string().trim().required(),
+  confirm_password: Joi.string().trim().required().valid(Joi.ref('password')),
+});
 
-export const loginValidation = () => {
-  return [
-    body('credential').trim().notEmpty().escape(),
-    body('password').trim().notEmpty().escape().isString(),
-  ]
-}
+const loginSchema = Joi.object({
+  credential: Joi.string().trim().required(),
+  password: Joi.string().trim().required(),
+});
 
-export const validate = (req, res, next) => {
-  const errors = validationResult(req)
-  if (errors.isEmpty()) {
-    return next()
+const validate = (schema) => (req, res, next) => {
+  const { error } = schema.validate(req.body, { abortEarly: false });
+
+  if (error) {
+    const extractedErrors = error.details.map((err) => ({
+      [err.path[0]]: err.message,
+    }));
+
+    return errorRes(res, extractedErrors, 'Input Invalid', 422);
   }
-  const extractedErrors = []
-  errors.array().map(err => extractedErrors.push({ [err.path]: err.msg }))
 
-  return errorRes(res, extractedErrors, 'Input Invalid', 422)
-}
+  // Sanitize user input (fields requiring sanitation)
+  const sanitizedBody = {};
+  for (const key in req.body) {
+    if (key === 'password' || key === 'confirm_password') {
+      sanitizedBody[key] = DOMPurify.sanitize(req.body[key]);
+    } else {
+      sanitizedBody[key] = req.body[key];
+    }
+  }
+
+  // Replace req.body with the sanitized version
+  req.body = sanitizedBody;
+
+  next();
+};
+
+export const loginValidation = validate(loginSchema);
+export const registerValidation = validate(registerSchema);
+

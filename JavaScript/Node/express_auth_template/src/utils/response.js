@@ -16,9 +16,9 @@ export const successRes = (
 
 export const errorRes = (
   res,
-  data,
+  errors,
   message = "Internal Server Error",
-  statusCode = 500
+  statusCode = 500,
 ) => {
   const responseData = {
     success: 0,
@@ -26,8 +26,8 @@ export const errorRes = (
     message: message,
   };
 
-  if (data !== undefined && data !== null && data.length > 0 && data !== "") {
-    responseData.data = data;
+  if (errors !== undefined && errors !== null && errors.length > 0 && errors !== "") {
+    responseData.errors = errors;
   }
 
   return res.status(statusCode).json(responseData).end();
