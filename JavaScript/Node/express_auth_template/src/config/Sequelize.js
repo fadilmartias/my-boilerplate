@@ -1,12 +1,11 @@
 import { Sequelize } from "sequelize";
-import { autoImport } from "@/utils/AutoImport.js";
 
-export const sequelize = new Sequelize('express_starter', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql',
+export const sequelize = new Sequelize(process.env.DB_NAME_DEV, process.env.DB_USER_DEV, process.env.DB_PASSWORD_DEV, {
+    host: process.env.DB_HOST_DEV,
+    dialect: process.env.SEQUELIZE_DIALECT_DEV || "mysql",
     dialectOptions: {
       supportBigNumbers: true,
     },
-    timezone: '+07:00', // for writing to database
-    logging: (...msg) => console.log(msg), // Displays all log function call parameters
+    timezone: process.env.SEQUELIZE_TIMEZONE_DEV, // for writing to database
+    logging: console.log, // Displays all log function call parameters
   });

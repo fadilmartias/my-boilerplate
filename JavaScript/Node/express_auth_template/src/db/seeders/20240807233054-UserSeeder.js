@@ -21,7 +21,6 @@ module.exports = {
         username: 'admin',
         phone: '08123456789',
         password: hashedPassword,
-        refreshToken: '',
       },
     ]);
   },

@@ -1,32 +1,37 @@
 export const successRes = (
   res,
-  data,
+  data = null,
   message = "Success",
-  statusCode = 200
+  statusCode = 200,
+  pagination = null
 ) => {
+
   const responseData = {
-    success: 1,
-    rc: statusCode,
+    success: true,
     message: message,
-    data: data,
   };
+  if (pagination !== null) {
+    responseData.pagination = pagination;
+  }
+  if (data !== null) {
+    responseData.data = data;
+  }
 
   return res.status(statusCode).json(responseData).end();
 };
 
 export const errorRes = (
   res,
-  errors,
+  errors = null,
   message = "Internal Server Error",
   statusCode = 500,
 ) => {
   const responseData = {
-    success: 0,
-    rc: statusCode,
+    success: false,
     message: message,
   };
 
-  if (errors !== undefined && errors !== null && errors.length > 0 && errors !== "") {
+  if (errors !== null) {
     responseData.errors = errors;
   }
 

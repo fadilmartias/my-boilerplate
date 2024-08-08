@@ -36,15 +36,15 @@ module.exports = {
         allowNull: false,
         defaultValue: '1'
       },
-      refreshToken: {
+      refresh_token: {
         type: Sequelize.STRING
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),
         type: Sequelize.DATE,
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         onUpdate: Sequelize.fn('NOW')
       }

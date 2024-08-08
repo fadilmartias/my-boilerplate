@@ -1,8 +1,5 @@
 'use strict';
-required('babel-register')
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -47,22 +44,22 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: '1'
     },
-    refreshToken: {
+    refresh_token: {
       type: DataTypes.STRING
     },
-    createdAt: {
+    created_at: {
       allowNull: false,
       defaultValue: DataTypes.NOW,
       type: DataTypes.DATE,
     },
-    updatedAt: {
+    updated_at: {
       type: DataTypes.DATE,
       onUpdate: DataTypes.NOW
     }
   }, {
     sequelize,
     modelName: 'User',
-    timestamps: true,
+    timestamps: false,
   });
   return User;
 };

@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon --loader esm-module-alias/loader --no-warnings index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:fresh": "node src/utils/dropAllTables.js && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
+    "db:fresh": "node src/utils/DropAllTables.js && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "aliases": {
     "@": "src"
