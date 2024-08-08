@@ -7,6 +7,7 @@ import v1 from '@/routes/v1/index.js'
 import dotenv from "dotenv";
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import { sequelize } from '@/config/Sequelize.js';
 
 const app = express()
 const port = 5000
@@ -30,6 +31,12 @@ app.get("/", (req, res) => {
   res.send("Api Siappp");
 });
 
-const server = app.listen(port, () => {
+const server = app.listen(port, async() => {
+  // try {
+  //   await sequelize.authenticate();
+  //   console.log('Connection has been established successfully.');
+  // } catch (error) {
+  //   console.error('Unable to connect to the database:', error);
+  // }
   console.log(`Example app listening on port ${port}, http://127.0.0.1:${port}`)
 })
