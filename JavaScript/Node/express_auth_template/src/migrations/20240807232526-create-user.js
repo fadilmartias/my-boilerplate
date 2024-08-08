@@ -31,15 +31,20 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      refresh_token: {
+      status: {
+        type: Sequelize.ENUM('0', '1'),
+        allowNull: false,
+        defaultValue: '1'
+      },
+      refreshToken: {
         type: Sequelize.STRING
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),
         type: Sequelize.DATE,
       },
-      updated_at: {
+      updatedAt: {
         type: Sequelize.DATE,
         onUpdate: Sequelize.fn('NOW')
       }

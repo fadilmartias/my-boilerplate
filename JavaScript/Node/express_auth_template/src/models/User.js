@@ -41,21 +41,27 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    refresh_token: {
+    status: {
+      type: DataTypes.ENUM('0', '1'),
+      allowNull: false,
+      defaultValue: '1'
+    },
+    refreshToken: {
       type: DataTypes.STRING
     },
-    created_at: {
+    createdAt: {
       allowNull: false,
       defaultValue: DataTypes.NOW,
       type: DataTypes.DATE,
     },
-    updated_at: {
+    updatedAt: {
       type: DataTypes.DATE,
       onUpdate: DataTypes.NOW
     }
   }, {
     sequelize,
     modelName: 'User',
+    timestamps: true,
   });
   return User;
-}
+};
