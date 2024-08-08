@@ -1,4 +1,5 @@
 'use strict';
+required('babel-register')
 const {
   Model
 } = require('sequelize');

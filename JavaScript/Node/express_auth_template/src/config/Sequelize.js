@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize";
+import { autoImport } from "@/utils/AutoImport.js";
 
 export const sequelize = new Sequelize('express_starter', 'root', '', {
     host: 'localhost',

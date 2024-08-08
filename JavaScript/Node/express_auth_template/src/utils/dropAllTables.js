@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import config from '../config/config.json' assert { type: 'json' }; // Sesuaikan path ke file konfigurasi Anda
+import config from '../db/config.json' assert { type: 'json' }; // Sesuaikan path ke file konfigurasi Anda
 
 const env = process.env.NODE_ENV || 'development';
 const dbConfig = config[env];
