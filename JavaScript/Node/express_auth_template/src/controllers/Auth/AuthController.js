@@ -20,7 +20,7 @@ export default class Auth {
     };
     try {
       const [rows] = await db.execute(`INSERT INTO users SET name = ?, email = ?, phone = ?, username = ?, password = ?`, [name, email, phone, username, hashPassword]);
-      return successRes(res, rows, "Success Register User");
+      return successRes(res, rows, "Success Register User", 201);
     } catch (err) {
       console.log(err);
       if (err.code == "ER_DUP_ENTRY")
@@ -59,7 +59,7 @@ export default class Auth {
           expiresIn: "1y",
         }
       );
-      await db.execute("UPDATE users SET refresh_token = ? WHERE id = ?", [
+      await db.execute("UPDATE users SET refreshToken = ? WHERE id = ?", [
         refreshToken,
         userId,
       ]);
@@ -74,7 +74,7 @@ export default class Auth {
       formattedUser.name = user.name;
       formattedUser.phone = user.phone;
       formattedUser.username = user.username;
-      formattedUser.refresh_token = user.refresh_token;
+      formattedUser.refreshToken = user.refreshToken;
       formattedUser.role = user.role;
       return successRes(
         res,
@@ -93,16 +93,16 @@ export default class Auth {
     // console.log(req.cookies.refreshToken);
     // return;
     if (!refreshToken)
-      return errorRes(res, null, "Refresh token not found", 500);
+      return errorRes(res, null, "Refresh token not found", 404);
     try {
       const [rows] = await db.execute(
-        `SELECT * FROM users WHERE refresh_token = ?`,
+        `SELECT * FROM users WHERE refreshToken = ?`,
         [refreshToken]
       );
       if (rows.length == 0)
         return errorRes(res, null, "Can't get current user", 500);
       const userId = rows[0].id;
-      await db.execute(`UPDATE users SET refresh_token = ? WHERE id = ?`, [
+      await db.execute(`UPDATE users SET refreshToken = ? WHERE id = ?`, [
         null,
         userId,
       ]);
@@ -118,10 +118,10 @@ export default class Auth {
     if (!refreshToken) return errorRes(res, null, "Unauthorized", 401);
     try {
       const [rows] = await db.execute(
-        `SELECT * FROM users WHERE refresh_token = ?`,
+        `SELECT * FROM users WHERE refreshToken = ?`,
         [refreshToken]
       );
-      if (rows.length == 0) return errorRes(res, null, "Unauthorized", 403);
+      if (rows.length == 0) return errorRes(res, null, "Forbidden", 403);
       const decoded = jwt.verify(
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET
