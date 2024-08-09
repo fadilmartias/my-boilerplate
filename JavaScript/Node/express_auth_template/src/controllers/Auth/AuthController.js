@@ -44,16 +44,18 @@ export default class Auth {
       const userId = user.id;
       const name = user.name;
       const email = user.email;
+      const username = user.username;
+      const status = user.status;
 
       const accessToken = jwt.sign(
-        { userId, name, email },
+        { userId, name, email, username, status },
         process.env.ACCESS_TOKEN_SECRET,
         {
           expiresIn: "1y",
         }
       );
       const refreshToken = jwt.sign(
-        { userId, name, email },
+        { userId, name, email, username, status },
         process.env.REFRESH_TOKEN_SECRET,
         {
           expiresIn: "1y",
@@ -131,10 +133,12 @@ export default class Auth {
       const userId = decoded.userId;
       const name = decoded.name;
       const email = decoded.email;
+      const username = decoded.username;
+      const status = decoded.status;
 
       // Membuat access token baru
       const accessToken = jwt.sign(
-        { userId, name, email },
+        { userId, name, email, username, status },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "1y" }
       );
