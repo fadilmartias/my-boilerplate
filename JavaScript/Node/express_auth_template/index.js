@@ -1,10 +1,10 @@
+// import '@/utils/Preload.js'
 import express from 'express'
 // import { createHandler } from 'graphql-http/lib/use/express';
 // import { schema } from '@/graphql/schema.js'
 import cors from 'cors'
 import helmet from 'helmet'
 import v1 from '@/routes/v1/index.js'
-import dotenv from "dotenv";
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 // import { sequelize } from '@/config/Sequelize.js';
@@ -13,15 +13,25 @@ import { formatInTimeZone } from 'date-fns-tz';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import session from 'express-session';
+import passport from '@/config/Passport.js'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 import rfs from 'rotating-file-stream' // version 2.x
 
 const app = express()
+// Middleware session
+app.use(session({
+  secret: process.env.SESSION_SECRET || "IOHNERG90U34UHIN4358Y793093289YU",
+  resave: false,
+  saveUninitialized: true,
+}));
+// Inisialisasi passport
+app.use(passport.initialize());
+app.use(passport.session());
 const port = 5000
 const date = new Date();
 // app config
-dotenv.config({ path: '.env.local' });
 morgan.token('clf', function () {
   const clf = formatInTimeZone(date, 'Asia/Jakarta', 'dd-MM-yyyy HH:mm:ss.SSSSSS');
   return clf
@@ -50,6 +60,9 @@ app.use(express.json())
 app.use('/v1', v1)
 app.get("/", (req, res) => {
   res.send("Api Siappp");
+});
+app.get("/google", (req, res) => {
+  res.send('<a href="v1/auth/google">Auth Google</a>');
 });
 
 const server = app.listen(port, async() => {

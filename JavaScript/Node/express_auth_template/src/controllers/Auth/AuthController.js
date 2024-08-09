@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { errorRes, successRes } from "@/utils/Response.js";
 import { db } from "@/config/database.js";
 
-export default class Auth {
+export default class AuthController {
   // constructor() {}
 
   register = async (req, res) => {
@@ -48,20 +48,20 @@ export default class Auth {
       const status = user.status;
 
       const accessToken = jwt.sign(
-        { userId, name, email, username, status },
+        { id: userId, name, email, username, status },
         process.env.ACCESS_TOKEN_SECRET,
         {
           expiresIn: "1y",
         }
       );
       const refreshToken = jwt.sign(
-        { userId, name, email, username, status },
+        { id: userId, name, email, username, status },
         process.env.REFRESH_TOKEN_SECRET,
         {
           expiresIn: "1y",
         }
       );
-      await db.execute("UPDATE users SET refreshToken = ? WHERE id = ?", [
+      await db.execute("UPDATE users SET refresh_token = ? WHERE id = ?", [
         refreshToken,
         userId,
       ]);
@@ -98,13 +98,13 @@ export default class Auth {
       return errorRes(res, null, "Refresh token not found", 404);
     try {
       const [rows] = await db.execute(
-        `SELECT * FROM users WHERE refreshToken = ?`,
+        `SELECT * FROM users WHERE refresh_token = ?`,
         [refreshToken]
       );
       if (rows.length == 0)
         return errorRes(res, null, "Can't get current user", 500);
       const userId = rows[0].id;
-      await db.execute(`UPDATE users SET refreshToken = ? WHERE id = ?`, [
+      await db.execute(`UPDATE users SET refresh_token = ? WHERE id = ?`, [
         null,
         userId,
       ]);
@@ -120,7 +120,7 @@ export default class Auth {
     if (!refreshToken) return errorRes(res, null, "Unauthorized", 401);
     try {
       const [rows] = await db.execute(
-        `SELECT * FROM users WHERE refreshToken = ?`,
+        `SELECT * FROM users WHERE refresh_token = ?`,
         [refreshToken]
       );
       if (rows.length == 0) return errorRes(res, null, "Forbidden", 403);
@@ -138,7 +138,7 @@ export default class Auth {
 
       // Membuat access token baru
       const accessToken = jwt.sign(
-        { userId, name, email, username, status },
+        { id: userId, name, email, username, status },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "1y" }
       );

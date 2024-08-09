@@ -1,9 +1,9 @@
 import express from "express";
-import User from "@/controllers/Users/UserController.js";
+import UserController from "@/controllers/Users/UserController.js";
 import { verifyToken } from "@/middleware/VerifyToken.js";
 
 const router = express.Router();
-const user = new User();
+const user = new UserController();
 
 router.get("/", verifyToken, user.list);
 router.put("/", verifyToken, user.action);

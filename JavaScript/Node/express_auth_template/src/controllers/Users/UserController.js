@@ -2,7 +2,9 @@ import model from "@/models/index.js";
 import { Op } from "sequelize";
 import { successRes, errorRes } from "@/utils/Response.js";
 import bcrypt from "bcrypt";
-export default class User {
+
+const User = model.User;
+export default class UserController {
   action = async (req, res) => {
     try {
       const { id, name, username, email, phone, password } = req.body;
@@ -17,7 +19,7 @@ export default class User {
         username: username,
         password: hashPassword,
       };
-      const user = await model.User.findOne({
+      const user = await User.findOne({
         where: { id: data.id },
         attributes: ["id"],
       });
@@ -25,7 +27,7 @@ export default class User {
         await user.update(data);
       } else {
         if (data.id === null) {
-          await model.User.create(data);
+          await User.create(data);
         } else {
           return errorRes(res, null, "User not found", 404);
         }
@@ -46,7 +48,7 @@ export default class User {
   // Delete User by ID
   delete = async (req, res) => {
     try {
-      const deleted = await model.User.destroy({
+      const deleted = await User.destroy({
         where: { id: req.params.id },
       });
       if (!deleted) return errorRes(res, null, "User not found", 404);
@@ -70,7 +72,7 @@ export default class User {
       if (username) filters.username = { [Op.like]: `%${username}%` };
       if (status) filters.status = status;
       if (phone) filters.phone = { [Op.like]: `%${phone}%` };
-      const { count, rows } = await model.User.findAndCountAll({
+      const { count, rows } = await User.findAndCountAll({
         limit: pageSize,
         offset: (page - 1) * pageSize,
         where: filters,
@@ -93,7 +95,7 @@ export default class User {
     try {
       const { id } = req.params;
       const { status } = req.body;
-      const user = await model.User.findOne({ where: { id: id } });
+      const user = await User.findOne({ where: { id: id } });
       if (user) {
         await user.update({ status: status });
       } else {

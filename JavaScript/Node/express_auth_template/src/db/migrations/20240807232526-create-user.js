@@ -10,6 +10,11 @@ module.exports = {
         type: Sequelize.BIGINT.UNSIGNED
         
       },
+      google_id: {
+        type: Sequelize.STRING,
+        unique: true, 
+        allowNull: true,
+      },
       name: {
         type: Sequelize.STRING,
         allowNull: false
@@ -29,7 +34,6 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       status: {
         type: Sequelize.ENUM('0', '1'),
@@ -37,7 +41,7 @@ module.exports = {
         defaultValue: '1'
       },
       refresh_token: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       created_at: {
         allowNull: false,

@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.BIGINT.UNSIGNED,
       },
+      google_id: {
+        type: DataTypes.STRING,
+        unique: true, 
+        allowNull: true,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -38,7 +43,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       status: {
         type: DataTypes.ENUM("0", "1"),
@@ -46,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: "1",
       },
       refresh_token: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
     },
     {

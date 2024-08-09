@@ -16,7 +16,7 @@ export const successRes = (
   if (data !== null) {
     responseData.data = data;
   }
-
+  res.setHeader('Content-Type', 'application/json');
   return res.status(statusCode).json(responseData).end();
 };
 
@@ -34,6 +34,6 @@ export const errorRes = (
   if (errors !== null) {
     responseData.errors = errors;
   }
-
+  res.setHeader('Content-Type', 'application/json');
   return res.status(statusCode).json(responseData).end();
 };
