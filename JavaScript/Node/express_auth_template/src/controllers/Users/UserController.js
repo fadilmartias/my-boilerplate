@@ -18,7 +18,7 @@ action = async (req, res) => {
       username: username,
       password: hashPassword
     }
-    const user = await model.User.findOne({ where: { id: data.id } });
+    const user = await model.User.findOne({ where: { id: data.id }, attributes: ["id"] });
     if (user) {
       await user.update(data);
     } else {
@@ -28,11 +28,11 @@ action = async (req, res) => {
         return errorRes(res, null, 'User not found', 404);
       }
     }
-    return successRes(res, user, created ? 'User was created' : 'User was updated', created ? 201 : 200);
+    return successRes(res, user, !user ? 'User was created' : 'User was updated', !user ? 201 : 200);
   } catch (error) {
     if(error.errors) 
       return errorRes(res, error.errors, 'Error creating user', 500);
-    return errorRes(res, error, 'Error creating user', 500);
+    return errorRes(res, error.message, 'Error creating user', 500);
   }
 };
 
@@ -66,7 +66,6 @@ list = async (req, res) => {
       limit: pageSize,
       offset: (page - 1) * pageSize,
       where: filters,
-      attributes: { exclude: ['password'] } // Tidak mengambil kolom password
     });
     const totalPages = Math.ceil(count / pageSize);
     const pagination = {

@@ -1,10 +1,10 @@
 import mysql from "mysql2/promise";
 
 export const db = mysql.createPool({
-  host: process.env.DB_HOST_DEV || "localhost",
-  user: process.env.DB_USER_DEV || "root",
-  password: process.env.DB_PASSWORD_DEV || "",
-  database: process.env.DB_DATABASE_DEV || "express_starter",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_DATABASE || "express_starter",
   waitForConnections: true,
   connectionLimit: 10,
   maxIdle: 10, // max idle connections, the default value is the same as `connectionLimit`

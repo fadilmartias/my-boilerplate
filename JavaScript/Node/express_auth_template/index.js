@@ -8,12 +8,18 @@ import dotenv from "dotenv";
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import { sequelize } from '@/config/Sequelize.js';
-
+import morgan from 'morgan';
+import { formatInTimeZone } from 'date-fns-tz';
 const app = express()
 const port = 5000
-
+const date = new Date();
 // app config
-dotenv.config();
+dotenv.config({ path: '.env.local' });
+morgan.token('clf', function () {
+  const clf = formatInTimeZone(date, 'Asia/Jakarta', 'dd-MM-yyyy HH:mm:ss.SSSSSS');
+  return clf
+});
+app.use(morgan('[:clf] - :method :url :status :response-time ms - :res[content-length] - HTTP/:http-version :remote-addr - :remote-user - :user-agent'))
 app.disable('x-powered-by')
 app.use(helmet())
 app.use(cors({
