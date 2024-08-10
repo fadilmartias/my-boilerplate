@@ -52,6 +52,9 @@ module.exports = (sequelize, DataTypes) => {
       refresh_token: {
         type: DataTypes.TEXT,
       },
+      email_verified_at: {
+        type: DataTypes.DATE,
+      },
     },
     {
       sequelize,

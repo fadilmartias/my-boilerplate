@@ -22,6 +22,13 @@ module.exports = {
         phone: '08123456789',
         password: hashedPassword,
       },
+      {
+        name: 'Fadil',
+        email: 'fadilmartias26@gmail.com',
+        username: 'fadil',
+        phone: '08123456789',
+        password: hashedPassword,
+      },
     ]);
   },
 

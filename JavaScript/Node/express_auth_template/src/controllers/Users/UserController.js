@@ -2,6 +2,10 @@ import model from "@/models/index.js";
 import { Op } from "sequelize";
 import { successRes, errorRes } from "@/utils/Response.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import path from "path";
+import fs from "fs";
+import { transporter } from "@/config/NodeMailer.js";
 
 const User = model.User;
 export default class UserController {
@@ -105,6 +109,79 @@ export default class UserController {
     } catch (error) {
       console.error("Error updating user status:", error);
       return errorRes(res, error, "Error updating user status", 500);
+    }
+  };
+
+  sendVerifyEmail = async (req, res) => {
+    try {
+      const { email } = req.body;
+      const user = await User.findOne({ where: { email } });
+      if (!user) {
+        return errorRes(res, null, "User not found", 404);
+      }
+
+      // Generate token
+      const token = jwt.sign(
+        { email: user.email },
+        process.env.RESET_TOKEN_SECRET,
+        {
+          expiresIn: "1h",
+        }
+      );
+
+      console.log(token);
+
+      // Define verify URL
+      const verifyURL = `${req.protocol}://${req.get('host')}/v1/users/verify-email?token=${token}`;
+      // const verifyURL = `http://127.0.0.1:5000/v1/users/verify-email?token=${token}`;
+
+      // Read the HTML template
+      const templatePath = path.join("src/templates", "verify-email.html");
+      fs.readFile(templatePath, "utf8", (err, data) => {
+        if (err) {
+          return errorRes(res, err.message, "Error reading template", 500);
+        }
+
+        // Replace placeholders in the template with actual values
+        const emailHTML = data.replace("{{verifyURL}}", verifyURL);
+
+        // Email options
+        const mailOptions = {
+          from: `"Your App Name" <${process.env.EMAIL}>`, // sender address
+          to: user.email, // list of receivers
+          subject: "Verify Email", // Subject line
+          html: emailHTML, // HTML body
+        };
+
+        // Send the email
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            return errorRes(res, error.message, "Error sending email", 500);
+          }
+          return successRes(res, null, "Email sent", 200);
+        });
+      });
+    } catch (error) {
+      return errorRes(res, error.message, "Error sending email", 500);
+    }
+  };
+
+  verifyEmail = async (req, res) => {
+    try {
+      const { token } = req.query;
+      if (!token) {
+        return errorRes(res, null, "Token not found", 404);
+      }
+      const decoded = jwt.verify(token, process.env.RESET_TOKEN_SECRET);
+      const user = await User.findOne({ where: { email: decoded.email } });
+      if (!user) {
+        return errorRes(res, null, "User not found", 404);
+      }
+      await user.update({ email_verified_at: new Date() });
+      return successRes(res, null, "Email verified", 200); // TODO: Redirect to success verified fe
+    } catch (error) {
+      console.error("Error verifying email:", error);
+      return errorRes(res, error, "Error verifying email", 500);
     }
   };
 }

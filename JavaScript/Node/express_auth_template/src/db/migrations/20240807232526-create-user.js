@@ -43,6 +43,9 @@ module.exports = {
       refresh_token: {
         type: Sequelize.TEXT
       },
+      email_verified_at: {
+        type: Sequelize.DATE,
+      },
       created_at: {
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

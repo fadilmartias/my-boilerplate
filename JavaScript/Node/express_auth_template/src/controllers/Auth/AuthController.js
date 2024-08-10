@@ -1,14 +1,18 @@
 import bcrypt from "bcrypt";
+import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { errorRes, successRes } from "@/utils/Response.js";
-import { db } from "@/config/database.js";
-
+import { db } from "@/config/Database.js";
+import { transporter } from "@/config/NodeMailer.js";
+import model from "@/models/index.js";
+import path from "path";
+import fs from "fs";
+const User = model.User;
 export default class AuthController {
   // constructor() {}
 
   register = async (req, res) => {
-    const { name, username, email, phone, password } =
-      req.body;
+    const { name, username, email, phone, password } = req.body;
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
     const data = {
@@ -19,7 +23,10 @@ export default class AuthController {
       password: hashPassword,
     };
     try {
-      const [rows] = await db.execute(`INSERT INTO users SET name = ?, email = ?, phone = ?, username = ?, password = ?`, [name, email, phone, username, hashPassword]);
+      const [rows] = await db.execute(
+        `INSERT INTO users SET name = ?, email = ?, phone = ?, username = ?, password = ?`,
+        [name, email, phone, username, hashPassword]
+      );
       return successRes(res, rows, "Success Register User", 201);
     } catch (err) {
       console.log(err);
@@ -152,6 +159,75 @@ export default class AuthController {
     } catch (err) {
       console.log(err);
       return errorRes(res, err.message, "Error", 500);
+    }
+  };
+
+  forgotPassword = async (req, res) => {
+    // TODO: Logic Forgot Password
+    const { email } = req.body;
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return errorRes(res, null, "User not found", 404);
+    }
+
+    // Generate token
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.RESET_TOKEN_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+
+    // Define reset URL
+    const resetURL = `http://localhost:3000/reset-password?token=${token}`;
+
+    // Read the HTML template
+    const templatePath = path.join(
+      "src/templates",
+      "email-forgot-password.html"
+    );
+    fs.readFile(templatePath, "utf8", (err, data) => {
+      if (err) {
+        return errorRes(res, err.message, "Error reading template", 500);
+      }
+
+      // Replace placeholders in the template with actual values
+      const emailHTML = data.replace("{{resetURL}}", resetURL);
+
+      // Email options
+      const mailOptions = {
+        from: `"Your App Name" <${process.env.EMAIL}>`, // sender address
+        to: user.email, // list of receivers
+        subject: "Password Reset Request", // Subject line
+        html: emailHTML, // HTML body
+      };
+
+      // Send the email
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return errorRes(res, error.message, "Error sending email", 500);
+        }
+        return successRes(res, null, "Email sent", 200);
+      });
+    });
+  };
+
+  resetPassword = async (req, res) => {
+    try {
+      const { token, password } = req.body;
+      const decoded = jwt.verify(token, process.env.RESET_TOKEN_SECRET);
+      const userId = decoded.id;
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return errorRes(res, null, "User not found", 404);
+      }
+      const salt = await bcrypt.genSalt();
+      const hashPassword = await bcrypt.hash(password, salt);
+      await user.update({ password: hashPassword });
+      return successRes(res, null, "Password reset successful", 200);
+    } catch (error) {
+      return errorRes(res, null, error.message, 500);
     }
   };
 }

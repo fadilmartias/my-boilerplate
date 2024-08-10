@@ -10,4 +10,8 @@ router.put("/", verifyToken, user.action);
 router.patch("/:id/status", verifyToken, user.updateStatus);
 router.delete("/:id", verifyToken, user.delete);
 
+router.get("/verify-email", user.verifyEmail); // update db
+router.post("/verify-email", user.sendVerifyEmail); // kirim email
+
+
 export default router;
