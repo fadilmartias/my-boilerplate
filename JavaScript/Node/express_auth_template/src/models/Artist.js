@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Artist.belongsTo(models.Agency, {
+        foreignKey: "agency_id",
+        as: "agency",
+        onUpdate: "RESTRICT",
+        onDelete: "RESTRICT",
+      });
     }
   }
   Artist.init(

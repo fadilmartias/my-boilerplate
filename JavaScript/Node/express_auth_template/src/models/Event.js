@@ -8,7 +8,28 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Event.hasMany(models.Datetime, {
+        foreignKey: "event_id",
+        as: "datetimes",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      });
+
+      // Relasi One-to-Many dengan Ticket
+      Event.hasMany(models.Ticket, {
+        foreignKey: "event_id",
+        as: "tickets",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      });
+
+      // Relasi Many-to-Many dengan Category
+      Event.belongsToMany(models.Category, {
+        through: "EventCategory", // Tabel pivot
+        foreignKey: "event_id",
+        otherKey: "category_id",
+        as: "categories",
+      });
     }
   }
   Event.init(

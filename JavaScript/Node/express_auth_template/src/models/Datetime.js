@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Datetime.belongsTo(models.Event, {
+        foreignKey: "event_id",
+        as: "event",
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      });
     }
   }
   Datetime.init(
