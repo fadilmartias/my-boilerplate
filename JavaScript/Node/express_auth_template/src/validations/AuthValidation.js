@@ -15,6 +15,19 @@ const loginSchema = Joi.object({
   password: Joi.string().trim().required(),
 });
 
+const forgotPasswordSchema = Joi.object({
+  email: Joi.string().trim().email().required(),
+});
+
+const resetPasswordSchema = Joi.object({
+  token: Joi.string().trim().required(),
+  password: Joi.string().trim().required(),
+  confirm_password: Joi.string().trim().required().valid(Joi.ref('password')),
+});
+
 export const loginValidation = validate(loginSchema);
 export const registerValidation = validate(registerSchema);
+export const forgotPasswordValidation = validate(forgotPasswordSchema);
+export const resetPasswordValidation = validate(resetPasswordSchema);
+
 

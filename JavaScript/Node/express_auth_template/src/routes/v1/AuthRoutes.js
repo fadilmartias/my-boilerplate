@@ -4,6 +4,7 @@ import AuthController from "@/controllers/Auth/AuthController.js";
 import { verifyToken } from "@/middleware/VerifyToken.js";
 import passport from '@/config/Passport.js'
 import {successRes} from '@/utils/Response.js'
+import { forgotPasswordValidation, resetPasswordValidation } from "@/validations/AuthValidation.js";
 
 const router = express.Router();
 const auth = new AuthController();
@@ -13,8 +14,8 @@ router.post("/register", registerValidation, auth.register);
 router.post("/refreshToken", auth.refreshToken);
 router.get("/logout", verifyToken, auth.logout);
 
-router.post("/forgot-password", auth.forgotPassword);
-router.post("/reset-password", auth.resetPassword);
+router.post("/forgot-password", forgotPasswordValidation, auth.forgotPassword);
+router.post("/reset-password", resetPasswordValidation, auth.resetPassword);
 
 
 // Google Auth
