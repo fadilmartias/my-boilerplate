@@ -70,7 +70,7 @@ export default class UserController {
     const { id, name, email, username, status, phone } = req.query;
     const filters = {};
     try {
-      if (id) filters.id = { [Op.like]: `%${id}%` };
+      if (id) filters.id = id;
       if (name) filters.name = { [Op.like]: `%${name}%` };
       if (email) filters.email = { [Op.like]: `%${email}%` };
       if (username) filters.username = { [Op.like]: `%${username}%` };
