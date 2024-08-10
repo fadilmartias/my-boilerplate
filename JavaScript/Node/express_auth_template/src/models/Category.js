@@ -8,13 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Relasi Many-to-Many dengan Event melalui EventCategory
-      Category.belongsToMany(models.Event, {
-        through: "EventCategory",
-        foreignKey: "category_id",
-        otherKey: "event_id",
-        as: "events",
-      });
+      // define association here
     }
   }
   Category.init(
