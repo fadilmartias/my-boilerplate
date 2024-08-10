@@ -14,18 +14,11 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return queryInterface.bulkInsert('Users', [
+    return queryInterface.bulkInsert('users', [
       {
         name: 'admin',
         email: 'admin@gmail.com',
         username: 'admin',
-        phone: '08123456789',
-        password: hashedPassword,
-      },
-      {
-        name: 'Fadil',
-        email: 'fadilmartias26@gmail.com',
-        username: 'fadil',
         phone: '08123456789',
         password: hashedPassword,
       },
@@ -39,6 +32,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return queryInterface.bulkDelete('Users', null, {});
+    return queryInterface.bulkDelete('users', null, {});
   }
 };
